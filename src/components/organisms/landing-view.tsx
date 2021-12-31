@@ -5,7 +5,7 @@ import LandingLogo from "../atoms/landing-logo";
 import LogoUnderline from "../atoms/logo-underline";
 
 const Container = styled.div`
-  height: 110vh;
+  height: 100vh;
   width: 100vw;
   min-height: 375px;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -15,8 +15,8 @@ const Container = styled.div`
   align-items: center;
   overflow: hidden;
   text-align: center;
-  position: fixed;
-  z-index: 105;
+  position: relative;
+  // z-index: 105;
   // top: 0;
   // right: 0;
 `;
@@ -28,7 +28,16 @@ const Text = styled.p`
     display: inline-block;
     overflow: hidden;
     opacity: 1;
-    width: auto;
+    // width: auto;
+    &:first-child {
+      width: 49px;
+    }
+    &:nth-child(2) {
+      width: 75px;
+    }
+    &:last-child {
+      width: 108px;
+    }
   }
 `;
 const LogoWrap = styled.div`
@@ -83,32 +92,8 @@ const LandingView: React.FC<{}> = () => {
         width: 0,
         opacity: 0,
       })
-      .from(span[3], {
-        duration: 1,
-        ease: "power2",
-        width: 0,
-        opacity: 0,
-      })
-      .from(span[4], {
-        duration: 1,
-        ease: "power2",
-        width: 0,
-        opacity: 0,
-      })
-      .from(span[5], {
-        duration: 1,
-        ease: "power2",
-        width: 0,
-        opacity: 0,
-      })
-      .from(span[6], {
-        duration: 1,
-        ease: "power2",
-        width: 0,
-        opacity: 0,
-      })
       .to(containerRef.current, {
-        duration: 0.7,
+        duration: 0.1,
         ease: "power2",
         position: "relative",
       })
@@ -130,9 +115,9 @@ const LandingView: React.FC<{}> = () => {
         </LineWrap>
       </LogoWrap>
       <Text>
-        <span>Share</span> <span>faithbased</span> <span>content</span>
-        <br />
-        <span> for</span> <span>all</span> <span>to</span> <span>read.</span>
+        <span>Share</span> <span>beautiful</span> <span>experiences.</span>
+        {/* <br /> */}
+        {/* <span> for</span> <span>all</span> <span>to</span> <span>read.</span> */}
       </Text>
     </Container>
   );
