@@ -1,0 +1,70 @@
+import styled from "styled-components";
+import BaseNote from "../components/molecules/base-note";
+import Navigation from "../components/molecules/nav";
+import Footer from "../components/organisms/footer";
+import StoryDetails from "../components/organisms/story-details";
+import WriterDetails from "../components/organisms/writer-details";
+
+// FDFAF2
+const Content = styled.div`
+  background-color: ${({ theme }) => theme.colors.secondary};
+  padding-bottom: 38px;
+`;
+const HeadingWrap = styled.div`
+  padding: 0 32px;
+`;
+const Title = styled.h3`
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 32px;
+`;
+const Text = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 16px 0 24px 0;
+`;
+const ProgressBar = styled.div``;
+
+const ProgressSpan = styled.span<{ active?: boolean }>`
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.black};
+  background-color: ${({ active, theme }) => active && theme.colors.black};
+  border-radius: 50%;
+  margin-right: 4.8px;
+`;
+
+const WriteStory: React.FC = () => {
+  return (
+    <div>
+      <Navigation />
+      <Content>
+        <HeadingWrap>
+          <Title>
+            Remember, your gratitude story could encourage someone out there.
+          </Title>
+          <Text>
+            No long sign up forms! Ready to spread gratitude in the air? Let’s
+            do it!
+          </Text>
+          <ProgressBar>
+            <ProgressSpan active />
+            <ProgressSpan />
+            <ProgressSpan />
+            <ProgressSpan />
+          </ProgressBar>
+        </HeadingWrap>
+        <div>
+          {/* <WriterDetails /> */}
+          <StoryDetails />
+        </div>
+        <BaseNote />
+      </Content>
+      <Footer />
+    </div>
+  );
+};
+
+export default WriteStory;
