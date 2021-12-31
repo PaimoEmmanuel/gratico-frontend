@@ -104,7 +104,7 @@ const DesktopScreen: React.FC = () => {
 
 	return (
 		<Container>
-			<Confetti width={width} height={height} recycle={true} />
+			<Confetti width={width} height={height} recycle={false} />
 			<Logo src='/assets/images/logo-desktop.png' alt='Gratico logo' />
 			<PhoneImage src='/assets/images/gratico-mobile.png' alt='mobile view' />
 			<GraticoContent>
