@@ -64,7 +64,7 @@ const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
         }}
         type="file"
         name="file"
-        id=""
+        id="file"
       />
       <Button
         onClick={(e) => {
@@ -78,7 +78,7 @@ const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
       <Back
         onClick={(e) => {
           e.preventDefault();
-          onSubmit(0);
+          onSubmit(1);
           window.scrollTo(0, 0);
         }}
       >

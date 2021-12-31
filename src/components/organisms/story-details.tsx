@@ -65,7 +65,7 @@ interface StoryDetailsProps {
 
 const StoryDetails: React.FC<StoryDetailsProps> = ({ onSubmit }) => {
   const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(ContentState.createFromText("abcde"))
+    EditorState.createWithContent(ContentState.createFromText(""))
   );
   const [convertedContent, setConvertedContent] = useState("");
 

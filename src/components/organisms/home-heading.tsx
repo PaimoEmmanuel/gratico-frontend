@@ -84,6 +84,7 @@ const Explore = styled(Link)`
   justify-content: center;
   align-items: center;
   width: fit-content;
+  z-index: 5;
   & svg {
     margin-left: 6px;
   }

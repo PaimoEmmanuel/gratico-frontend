@@ -5,7 +5,7 @@ import LandingLogo from "../atoms/landing-logo";
 import LogoUnderline from "../atoms/logo-underline";
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100vh + 20px;
   width: 100vw;
   min-height: 375px;
   background-color: ${({ theme }) => theme.colors.primary};
