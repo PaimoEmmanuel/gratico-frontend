@@ -104,13 +104,13 @@ const DesktopScreen: React.FC = () => {
 
 	return (
 		<Container>
-			<Confetti width={width} height={height} />
+			<Confetti width={width} height={height} recycle={true} />
 			<Logo src='/assets/images/logo-desktop.png' alt='Gratico logo' />
 			<PhoneImage src='/assets/images/gratico-mobile.png' alt='mobile view' />
 			<GraticoContent>
 				<Gratico>gratico is currently only available on mobile.</Gratico>
 				<Instruction>
-					Please, open <GraticoLink>gratico.xyz</GraticoLink> on your phone’s browser to read faith
+					Please, open <GraticoLink>gratico.xyz </GraticoLink> on your phone’s browser to read faith
 					based contents.
 				</Instruction>
 			</GraticoContent>
