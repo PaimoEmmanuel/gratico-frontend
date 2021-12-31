@@ -10,4 +10,9 @@ body {
   height: 400px !important;
   border: 1x solid #242549 !important;
   background-color: white;
+  padding: 0 16px;
+  font-family: Graphik;
+}
+.rdw-editor-wrapper {
+  margin-top: 16px;
 }

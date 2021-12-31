@@ -35,28 +35,41 @@ const Name = styled.div`
 	//   border-bottom: 1px solid #efefef;
 `
 const Button = styled.button`
-	height: 50px;
-	width: 100%;
-	background-color: ${({ theme }) => theme.colors.blue};
-	margin-top: 50px;
-	border-radius: 8px;
-	color: ${({ theme }) => theme.colors.white};
-	border: none;
-`
-const WriterDetails: React.FC = () => {
-	return (
-		<Form>
-			<Email>
-				<Label htmlFor=''>Let’s start with your email, it’s really useful!</Label>
-				<Input type='text' placeholder='Input your email address here' />
-				<InputNote>You can edit your stories using this email.</InputNote>
-			</Email>
-			<Name>
-				<Label htmlFor=''>Ever seen an author without a name?</Label>
-				<Input type='text' placeholder='Input your name or nickname here' />
-				<Button>Next</Button>
-			</Name>
-		</Form>
-	)
+  height: 50px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.blue};
+  margin-top: 50px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+`;
+
+interface WriterDetailsProps {
+  onSubmit: any;
 }
-export default WriterDetails
+const WriterDetails: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
+  return (
+    <Form>
+      <Email>
+        <Label htmlFor="">
+          Let’s start with your email, it’s really useful!
+        </Label>
+        <Input type="text" placeholder="Input your email address here" />
+        <InputNote>You can edit your stories using this email.</InputNote>
+      </Email>
+      <Name>
+        <Label htmlFor="">Ever seen an author without a name?</Label>
+        <Input type="text" placeholder="Input your name or nickname here" />
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            onSubmit(1);
+          }}
+        >
+          Next
+        </Button>
+      </Name>
+    </Form>
+  );
+};
+export default WriterDetails;

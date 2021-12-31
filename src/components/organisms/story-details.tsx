@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { EditorState, ContentState } from "draft-js";
 import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Editor } from "react-draft-wysiwyg";
+import { convertToHTML } from "draft-convert";
 import { useEffect, useState } from "react";
 
 const Form = styled.form`
@@ -47,12 +48,31 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   border: none;
 `;
-const StoryDetails: React.FC = () => {
+const Back = styled.button`
+  border: none;
+  text-decoration: underline;
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.blue};
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 24px;
+`;
+
+interface StoryDetailsProps {
+  onSubmit: any;
+}
+
+const StoryDetails: React.FC<StoryDetailsProps> = ({ onSubmit }) => {
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(ContentState.createFromText("abcde"))
   );
+  const [convertedContent, setConvertedContent] = useState("");
+
   useEffect(() => {
-    console.log(editorState);
+    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+    setConvertedContent(currentContentAsHTML);
+    // console.log(editorState);
   }, [editorState]);
   return (
     <Form>
@@ -95,7 +115,23 @@ const StoryDetails: React.FC = () => {
             Don’t leave out the juices, we are here for all of it!
           </InputNote>
         </InputNote>
-        <Button>Next</Button>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("editorState", convertedContent);
+            onSubmit(2);
+          }}
+        >
+          Next
+        </Button>
+        <Back
+          onClick={(e) => {
+            e.preventDefault();
+            onSubmit(0);
+          }}
+        >
+          Back
+        </Back>
       </Name>
     </Form>
   );

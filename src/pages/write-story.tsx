@@ -1,6 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
 import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
+import CoverPhoto from "../components/organisms/cover-photo";
 import Footer from "../components/organisms/footer";
 import StoryDetails from "../components/organisms/story-details";
 import WriterDetails from "../components/organisms/writer-details";
@@ -37,6 +39,7 @@ const ProgressSpan = styled.span<{ active?: boolean }>`
 `;
 
 const WriteStory: React.FC = () => {
+  const [activeView, setActiveView] = useState(0);
   return (
     <div>
       <Navigation />
@@ -50,15 +53,16 @@ const WriteStory: React.FC = () => {
             do it!
           </Text>
           <ProgressBar>
-            <ProgressSpan active />
-            <ProgressSpan />
-            <ProgressSpan />
+            <ProgressSpan active={activeView == 0} />
+            <ProgressSpan active={activeView == 1} />
+            <ProgressSpan active={activeView == 2} />
             <ProgressSpan />
           </ProgressBar>
         </HeadingWrap>
         <div>
-          {/* <WriterDetails /> */}
-          <StoryDetails />
+          {activeView === 0 && <WriterDetails onSubmit={setActiveView} />}
+          {activeView === 1 && <StoryDetails onSubmit={setActiveView} />}
+          {activeView === 2 && <CoverPhoto onSubmit={setActiveView} />}
         </div>
         <BaseNote />
       </Content>
