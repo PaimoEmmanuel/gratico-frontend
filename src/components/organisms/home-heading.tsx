@@ -1,9 +1,11 @@
 import gsap from 'gsap'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 // import Confetti from '../atoms/confetti'
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'usehooks-ts'
+
+import Menu from '../molecules/menu'
 
 const Container = styled.div`
 	padding: 32px 20px;
@@ -18,14 +20,27 @@ const Nav = styled.nav`
 	justify-content: space-between;
 	align-items: center;
 `
-const Menu = styled.div`
+const MenuIcon = styled.div<StyleProps>`
 	& span {
 		height: 3px;
 		width: 23.25px;
 		display: block;
+		border-radius: 10px;
 		background-color: ${({ theme }) => theme.colors.white};
 		&:not(:last-child) {
 			margin-bottom: 4.5px;
+		}
+
+		&:nth-child(1) {
+			transform: ${(props) =>
+				props.clicked ? 'translateY(7px) rotate(45deg)' : 'translateY(0px) rotate(0deg)'};
+		}
+		&:nth-child(2) {
+			display: ${(props) => (props.clicked ? 'none' : 'block')};
+		}
+		&:nth-child(3) {
+			transform: ${(props) =>
+				props.clicked ? 'translateY(0px) rotate(-45deg)' : 'translateY(0px) rotate(0deg)'};
 		}
 	}
 `
@@ -88,7 +103,12 @@ const Explore = styled.a`
 const Absolute = styled.div`
 	position: absolute;
 `
+interface StyleProps {
+	clicked: boolean
+}
+
 const HomeHeading: React.FC = () => {
+	const [state, setState] = useState({ isNavOpen: false })
 	const { width, height } = useWindowSize()
 
 	const wrapRef = useRef(null)
@@ -100,18 +120,26 @@ const HomeHeading: React.FC = () => {
 		//   opacity: 0,
 		// });
 	})
+
+	const handleNavClick = () => {
+		setState((state) => ({ ...state, isNavOpen: !state.isNavOpen }))
+	}
+
 	return (
 		<Container>
+			<Confetti width={width} height={height} recycle={false} />
 			<Nav>
 				<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
-				<Menu>
+				<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen}>
 					<span></span>
 					<span></span>
 					<span></span>
-				</Menu>
+				</MenuIcon>
 			</Nav>
+
+			{state.isNavOpen ? <Menu /> : <div></div>}
+
 			<Content>
-				<Confetti width={width} height={height} />
 				<Absolute>
 					<svg
 						width='354'
@@ -128,7 +156,7 @@ const HomeHeading: React.FC = () => {
 						/>
 					</svg>
 				</Absolute>
-				{/* <Absolute></Absolute> */}
+
 				<Img src='/assets/images/heading.png' alt='Gratico' />
 				<Heading>2021 was sure a rollercoaster!</Heading>
 				<Body>
