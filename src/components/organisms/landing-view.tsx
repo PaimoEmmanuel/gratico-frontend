@@ -51,93 +51,6 @@ const LineWrapAfter = styled.div`
 `
 
 const LandingView: React.FC<{}> = () => {
-<<<<<<< HEAD
-	const underlineAfterRef = useRef(null)
-	const logoWrapRef = useRef(null)
-	const containerRef = useRef(null)
-	useEffect(() => {
-		const span = document.querySelectorAll('span')
-		gsap.timeline()
-			.from(logoWrapRef.current, {
-				duration: 1,
-				ease: 'power2',
-				y: 50,
-				opacity: 0,
-			})
-			.to(underlineAfterRef.current, { duration: 1, width: '0' })
-			.from(span[0], {
-				duration: 1,
-				ease: 'power2',
-				width: 0,
-				opacity: 0,
-			})
-			.from(span[1], {
-				duration: 1,
-				ease: 'power2',
-				width: 0,
-				opacity: 0,
-			})
-			.from(span[2], {
-				duration: 1,
-				ease: 'power2',
-				width: 0,
-				opacity: 0,
-			})
-			// .from(span[3], {
-			//   duration: 1,
-			//   ease: "power2",
-			//   width: 0,
-			//   opacity: 0,
-			// })
-			// .from(span[4], {
-			//   duration: 1,
-			//   ease: "power2",
-			//   width: 0,
-			//   opacity: 0,
-			// })
-			// .from(span[5], {
-			//   duration: 1,
-			//   ease: "power2",
-			//   width: 0,
-			//   opacity: 0,
-			// })
-			// .from(span[6], {
-			//   duration: 1,
-			//   ease: "power2",
-			//   width: 0,
-			//   opacity: 0,
-			// })
-			.to(containerRef.current, {
-				duration: 0.7,
-				ease: 'power2',
-				// opacity: 0,
-				minHeight: 0,
-				height: 0,
-			})
-		// .to(containerRef.current, {
-		//   duration: 0.7,
-		//   ease: "power2",
-		//   minHeight: 0,
-		//   height: 0,
-		// });
-	}, [])
-	return (
-		<Container ref={containerRef}>
-			<LogoWrap ref={logoWrapRef} className='container'>
-				<LandingLogo />
-				<LineWrap>
-					<LogoUnderline />
-					<LineWrapAfter ref={underlineAfterRef} />
-				</LineWrap>
-			</LogoWrap>
-			<Text>
-				<span>Share</span> <span>beautiful</span> <span>experiences.</span>{' '}
-				{/* <span> for</span> <span>all</span> <span>to</span> <span>read.</span> */}
-			</Text>
-		</Container>
-	)
-}
-=======
   const underlineAfterRef = useRef(null);
   const logoWrapRef = useRef(null);
   const containerRef = useRef(null);
@@ -224,6 +137,5 @@ const LandingView: React.FC<{}> = () => {
     </Container>
   );
 };
->>>>>>> a5d019b (quick fix)
 
 export default LandingView
