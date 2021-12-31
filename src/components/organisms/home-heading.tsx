@@ -4,6 +4,7 @@ import styled from 'styled-components'
 // import Confetti from '../atoms/confetti'
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'usehooks-ts'
+import { Link } from 'react-router-dom'
 
 import Menu from '../molecules/menu'
 
@@ -15,6 +16,7 @@ const Container = styled.div`
 		display: none;
 	}
 `
+
 const Nav = styled.nav`
 	display: flex;
 	justify-content: space-between;
@@ -60,6 +62,7 @@ const Heading = styled.h1`
 	color: ${({ theme }) => theme.colors.white};
 	margin-top: 54px;
 `
+
 const Body = styled.p`
 	font-size: 15px;
 	line-height: 24px;
@@ -68,7 +71,8 @@ const Body = styled.p`
 	text-align: center;
 	margin: 24px 0 32px 0;
 `
-const Write = styled.a`
+
+const Write = styled(Link)`
 	font-size: 15px;
 	letter-spacing: -0.2px;
 	width: 248px;
@@ -82,11 +86,13 @@ const Write = styled.a`
 	text-decoration: none;
 	color: black;
 	margin-bottom: 24px;
+	z-index: 5;
+	position: relative;
 `
 const Grin = styled.img`
 	margin: 0 4px;
 `
-const Explore = styled.a`
+const Explore = styled(Link)`
 	font-size: 15px;
 	color: white;
 	padding: 10px;
@@ -96,6 +102,8 @@ const Explore = styled.a`
 	justify-content: center;
 	align-items: center;
 	width: fit-content;
+	position: relative;
+	z-index: 5;
 	& svg {
 		margin-left: 6px;
 	}
@@ -160,15 +168,16 @@ const HomeHeading: React.FC = () => {
 				<Img src='/assets/images/heading.png' alt='Gratico' />
 				<Heading>2021 was sure a rollercoaster!</Heading>
 				<Body>
-					...with the many happenings! Why don’t we spread gratitude in the air to encourage someone
-					out there. Let’s start from you...
+					...with the many happenings! Let’s spread gratitude in the air, encourage someone out
+					there.
 				</Body>
-				<Write href=''>
-					What are you grateful for
-					<Grin src='/assets/images/grin.png' alt='grin' /> ?
+
+				<Write to='/write-story'>
+					What are you grateful for <Grin src='/assets/images/grin.png' alt='grin' /> ?
 				</Write>
-				<Explore href=''>
-					Explore Stories{' '}
+
+				<Explore to='/explore'>
+					Explore Stories
 					<svg
 						width='15'
 						height='13'

@@ -5,8 +5,8 @@ const BaseText = styled.h3`
   font-size: 34px;
   line-height: 38px;
   letter-spacing: -1px;
-//   padding: 64px 30px 0 30px;
   text-align: center;
+  padding: 0 30px;
 `;
 const LineWrap = styled.div`
   text-align: center;

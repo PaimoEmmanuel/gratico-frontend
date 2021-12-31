@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import BaseNote from '../molecules/base-note'
 
@@ -21,6 +22,7 @@ const Title = styled.p`
     line-height: 17.6px
     letter-spacing: -0.2px;
     text-align: center;
+    margin-top: 44px;
 `
 const Text = styled.p`
 	font-size: 15px;
@@ -29,12 +31,12 @@ const Text = styled.p`
 	text-align: center;
 	padding: 14px 40px 24px;
 `
-const Explore = styled.a`
+const Explore = styled(Link)`
 	font-size: 14px;
 	color: #000000;
 	padding: 10px;
 	border: 1px solid #000000;
-	margin: auto;
+	margin: 0 auto 64px auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -43,7 +45,7 @@ const Explore = styled.a`
 		margin-left: 6px;
 	}
 `
-const Write = styled.a`
+const Write = styled(Link)`
 	font-size: 15px;
 	letter-spacing: -0.2px;
 	width: 200px;
@@ -64,6 +66,7 @@ const Write = styled.a`
 const ImgWrap = styled.div`
 	padding: 0 40px;
 	display: flex;
+	overflow: hidden;
 `
 const Img = styled.img`
 	width: 70%;
@@ -82,16 +85,16 @@ const HomeExplore: React.FC = () => {
 			title: 'Met the two!',
 			transform: 'rotate(8deg) scale(0.9)',
 		},
-		{
-			image: '/assets/images/explore-3.png',
-			title: 'Met the three!',
-			transform: 'rotate(8deg) scale(0.9)',
-		},
-		{
-			image: '/assets/images/explore-4.png',
-			title: 'Met the four!',
-			transform: 'rotate(8deg) scale(0.9)',
-		},
+		// {
+		//   image: "/assets/images/explore-3.png",
+		//   title: "Met the three!",
+		//   transform: "rotate(8deg) scale(0.9)",
+		// },
+		// {
+		//   image: "/assets/images/explore-4.png",
+		//   title: "Met the four!",
+		//   transform: "rotate(8deg) scale(0.9)",
+		// },
 	]
 	const [stories, setStories] = useState(InitialStories)
 	const [activeStory, setActiveStory] = useState(0)
@@ -100,13 +103,17 @@ const HomeExplore: React.FC = () => {
 		let newArr = stories
 		stories.forEach((story, index) => {
 			if (activeStory === index) {
-				newArr[index] = { ...story, transform: '' }
+				if (index === 0) {
+					newArr[index] = { ...story, transform: 'translateX(00%)' }
+				} else {
+					newArr[index] = { ...story, transform: 'translateX(-100%)' }
+				}
 			} else if (activeStory < index) {
 				newArr[index] = { ...story, transform: 'rotate(8deg) scale(0.9)' }
 			} else {
 				newArr[index] = {
 					...story,
-					transform: `rotate(-8deg) scale(0.9) {translateX(-${(index + 1) * 100}%)}`,
+					transform: `rotate(-8deg) scale(0.9) translateX(-${(index + 1) * 100}%)`,
 				}
 			}
 		})
@@ -137,8 +144,8 @@ const HomeExplore: React.FC = () => {
 			<Text>
 				did you meet someone special or some set of people that switched things up for good this year?
 			</Text>
-			<div>progress bar</div>
-			<Write href=''>
+			{/* <div>progress bar</div> */}
+			<Write to='/write-story'>
 				Share your story
 				<svg
 					width='12'
@@ -155,7 +162,7 @@ const HomeExplore: React.FC = () => {
 					/>
 				</svg>
 			</Write>
-			<Explore href=''>
+			<Explore to='/explore'>
 				Explore Stories
 				<svg
 					width='15'

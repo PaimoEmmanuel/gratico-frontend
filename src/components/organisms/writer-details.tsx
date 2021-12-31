@@ -43,7 +43,11 @@ const Button = styled.button`
 	color: ${({ theme }) => theme.colors.white};
 	border: none;
 `
-const WriterDetails: React.FC = () => {
+
+interface WriterDetailsProps {
+	onSubmit: any
+}
+const WriterDetails: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
 	return (
 		<Form>
 			<Email>
@@ -54,7 +58,15 @@ const WriterDetails: React.FC = () => {
 			<Name>
 				<Label htmlFor=''>Ever seen an author without a name?</Label>
 				<Input type='text' placeholder='Input your name or nickname here' />
-				<Button>Next</Button>
+				<Button
+					onClick={(e) => {
+						e.preventDefault()
+						onSubmit(1)
+						window.scrollTo(0, 0)
+					}}
+				>
+					Next
+				</Button>
 			</Name>
 		</Form>
 	)
