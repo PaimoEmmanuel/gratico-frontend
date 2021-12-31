@@ -1,8 +1,8 @@
-import gsap from 'gsap'
-import { useEffect, useRef } from 'react'
-import styled from 'styled-components'
-import LandingLogo from '../atoms/landing-logo'
-import LogoUnderline from '../atoms/logo-underline'
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import styled from "styled-components";
+import LandingLogo from "../atoms/landing-logo";
+import LogoUnderline from "../atoms/logo-underline";
 
 const Container = styled.div`
   height: 100vh;
@@ -32,23 +32,23 @@ const Text = styled.p`
   }
 `;
 const LogoWrap = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const LineWrap = styled.div`
-	margin-top: -10px;
-	position: relative;
-`
+  margin-top: -10px;
+  position: relative;
+`;
 const LineWrapAfter = styled.div`
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: ${({ theme }) => theme.colors.primary};
-`
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
 
 const LandingView: React.FC<{}> = () => {
   const underlineAfterRef = useRef(null);
@@ -110,14 +110,14 @@ const LandingView: React.FC<{}> = () => {
       .to(containerRef.current, {
         duration: 0.7,
         ease: "power2",
-        // opacity: 0,
-        minHeight: 0,
-        height: 0,
+        position: "relative",
       })
       .to(containerRef.current, {
         duration: 0.7,
         ease: "power2",
-        position: "relative",
+        // opacity: 0,
+        minHeight: 0,
+        height: 0,
       });
   }, []);
   return (
@@ -138,4 +138,4 @@ const LandingView: React.FC<{}> = () => {
   );
 };
 
-export default LandingView
+export default LandingView;

@@ -70,6 +70,7 @@ const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
         onClick={(e) => {
           e.preventDefault();
           onSubmit(2);
+          window.scrollTo(0, 0);
         }}
       >
         Preview story
@@ -78,6 +79,7 @@ const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
         onClick={(e) => {
           e.preventDefault();
           onSubmit(0);
+          window.scrollTo(0, 0);
         }}
       >
         Back

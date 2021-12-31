@@ -19,7 +19,7 @@ const AppRouter = () => {
             component={withRouter(WriteStory)}
             exact={true}
           />
-          <Route path='/explore' component={Explore} exact={true} />
+          <Route path="/explore" component={withRouter(Explore)} exact={true} />
           <Route path="/stroy/:storyID" component={WriteStory} exact={true} />
           <Route path="/" component={HomePage} exact={true} />
           <Redirect to="/not-found" />
@@ -29,4 +29,4 @@ const AppRouter = () => {
   );
 };
 
-export default AppRouter
+export default AppRouter;

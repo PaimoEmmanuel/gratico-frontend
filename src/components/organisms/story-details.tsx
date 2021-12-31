@@ -120,6 +120,7 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({ onSubmit }) => {
             e.preventDefault();
             console.log("editorState", convertedContent);
             onSubmit(2);
+            window.scrollTo(0, 0);
           }}
         >
           Next
@@ -128,6 +129,7 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({ onSubmit }) => {
           onClick={(e) => {
             e.preventDefault();
             onSubmit(0);
+            window.scrollTo(0, 0);
           }}
         >
           Back

@@ -64,6 +64,7 @@ const WriterDetails: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
           onClick={(e) => {
             e.preventDefault();
             onSubmit(1);
+			window.scrollTo(0, 0);
           }}
         >
           Next

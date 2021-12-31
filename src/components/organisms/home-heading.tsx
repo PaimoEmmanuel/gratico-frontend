@@ -74,7 +74,7 @@ const Write = styled(Link)`
 const Grin = styled.img`
   margin: 0 4px;
 `;
-const Explore = styled.a`
+const Explore = styled(Link)`
   font-size: 15px;
   color: white;
   padding: 10px;
@@ -141,7 +141,7 @@ const HomeHeading: React.FC = () => {
           What are you grateful for
           <Grin src="/assets/images/grin.png" alt="grin" /> ?
         </Write>
-        <Explore href="">
+        <Explore to="/explore">
           Explore Stories{" "}
           <svg
             width="15"

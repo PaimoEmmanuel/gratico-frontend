@@ -31,7 +31,7 @@ const Text = styled.p`
 	text-align: center;
 	padding: 14px 40px 24px;
 `
-const Explore = styled.a`
+const Explore = styled(Link)`
   font-size: 14px;
   color: #000000;
   padding: 10px;
@@ -167,7 +167,7 @@ const HomeExplore: React.FC = () => {
           />
         </svg>
       </Write>
-      <Explore href="">
+      <Explore to="/explore">
         Explore Stories
         <svg
           width="15"

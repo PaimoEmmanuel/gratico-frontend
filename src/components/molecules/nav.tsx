@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -21,7 +22,10 @@ const Menu = styled.div`
 
 const Navigation: React.FC = () => (
   <Nav>
-    <img src="/assets/images/mobile-footer-logo.png" alt="Gratico logo" />
+    <Link to="/">
+      <img src="/assets/images/mobile-footer-logo.png" alt="Gratico logo" />
+    </Link>
+
     <Menu>
       <span></span>
       <span></span>
