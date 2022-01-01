@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
 	padding: 35px 30px;
@@ -11,7 +12,15 @@ const Container = styled.div`
 		display: none;
 	}
 `
-const Link = styled.a`
+
+const Logo = styled(Link)`
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	height: 44px;
+`
+
+const NavLink = styled.a`
 	color: black;
 	font-size: 15px;
 	margin-bottom: 24px;
@@ -25,9 +34,11 @@ const Footnote = styled.p`
 
 const Footer: React.FC = () => (
 	<Container>
-		<img src='/assets/images/mobile-footer-logo.png' alt='Gratico logo' />
-		<Link href=''>Give feedback</Link>
-		{/* <Link href=''>About us</Link> */}
+		<Logo to='/'>
+			<img src='/assets/images/mobile-footer-logo.png' alt='Gratico logo' />
+		</Logo>
+		<NavLink href=''>Leave a feedback</NavLink>
+		{/* <NavLink href=''>About us</NavLink> */}
 		<Footnote>© 2021 The GratiCo. All Rights Reserved.</Footnote>
 	</Container>
 )
