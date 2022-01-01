@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import Menu from '../molecules/menu'
@@ -82,10 +82,26 @@ const SubHeading = styled.p`
 	margin-top: 7px;
 `
 
+const emojiAnimation = keyframes`
+  0%
+  {
+    transform: translateY(-5px);
+  }
+  50%
+  {
+    transform: translateY(0);
+  }
+  100%
+  {
+    transform: translateY(-5px);
+  }
+`
+
 const Grin = styled.img`
 	margin: 0 6px;
 	width: 30px;
 	height: 30px;
+	animation: ${emojiAnimation} 2s infinite;
 `
 
 interface StyleProps {

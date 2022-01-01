@@ -11,7 +11,7 @@ const Stories = styled.div`
 `
 
 const MoreActions = styled.div`
-	margin: 40px auto 0;
+	margin: 40px auto;
 `
 
 const SeeMoreStories = styled.div`
@@ -105,7 +105,7 @@ const ExploreStories: React.FC = () => {
 			<MoreActions>
 				<SeeMoreStories>See more stories</SeeMoreStories>
 
-				<ShareStory to='/explore'>
+				<ShareStory to='/write-story'>
 					Share your story
 					<svg
 						width='12'

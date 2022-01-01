@@ -1,74 +1,69 @@
-import { useState } from "react";
-import styled from "styled-components";
-import BaseNote from "../components/molecules/base-note";
-import Navigation from "../components/molecules/nav";
-import CoverPhoto from "../components/organisms/cover-photo";
-import Footer from "../components/organisms/footer";
-import StoryDetails from "../components/organisms/story-details";
-import WriterDetails from "../components/organisms/writer-details";
+import { useState } from 'react'
+import styled from 'styled-components'
+import BaseNote from '../components/molecules/base-note'
+import Navigation from '../components/molecules/nav'
+import CoverPhoto from '../components/organisms/cover-photo'
+import Footer from '../components/organisms/footer'
+import StoryDetails from '../components/organisms/story-details'
+import WriterDetails from '../components/organisms/writer-details'
 
 // FDFAF2
 const Content = styled.div`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  padding-bottom: 38px;
-`;
+	background-color: ${({ theme }) => theme.colors.secondary};
+	padding-bottom: 38px;
+`
 const HeadingWrap = styled.div`
-  padding: 0 32px;
-`;
+	padding: 0 32px;
+`
 const Title = styled.h3`
-  font-size: 24px;
-  line-height: 30px;
-  padding-top: 32px;
-`;
+	font-size: 24px;
+	line-height: 30px;
+	padding-top: 32px;
+`
 const Text = styled.p`
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.2px;
-  margin: 16px 0 24px 0;
-`;
-const ProgressBar = styled.div``;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: -0.2px;
+	margin: 16px 0 24px 0;
+`
+const ProgressBar = styled.div``
 
 const ProgressSpan = styled.span<{ active?: boolean }>`
-  display: inline-block;
-  height: 12px;
-  width: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.black};
-  background-color: ${({ active, theme }) => active && theme.colors.black};
-  border-radius: 50%;
-  margin-right: 4.8px;
-`;
+	display: inline-block;
+	height: 12px;
+	width: 12px;
+	border: 1px solid ${({ theme }) => theme.colors.black};
+	background-color: ${({ active, theme }) => active && theme.colors.black};
+	border-radius: 50%;
+	margin-right: 4.8px;
+`
 
 const WriteStory: React.FC = () => {
-  const [activeView, setActiveView] = useState(0);
-  return (
-    <div>
-      <Navigation />
-      <Content>
-        <HeadingWrap>
-          <Title>
-            Remember, your gratitude story could encourage someone out there.
-          </Title>
-          <Text>
-            No long sign up forms! Ready to spread gratitude in the air? Let’s
-            do it!
-          </Text>
-          <ProgressBar>
-            <ProgressSpan active={activeView == 0} />
-            <ProgressSpan active={activeView == 1} />
-            <ProgressSpan active={activeView == 2} />
-            <ProgressSpan />
-          </ProgressBar>
-        </HeadingWrap>
-        <div>
-          {activeView === 0 && <WriterDetails onSubmit={setActiveView} />}
-          {activeView === 1 && <StoryDetails onSubmit={setActiveView} />}
-          {activeView === 2 && <CoverPhoto onSubmit={setActiveView} />}
-        </div>
-        <BaseNote />
-      </Content>
-      <Footer />
-    </div>
-  );
-};
+	const [activeView, setActiveView] = useState(0)
+	return (
+		<div>
+			<Navigation />
+			<Content>
+				<HeadingWrap>
+					<Title>Remember, your gratitude story could encourage someone out there.</Title>
+					<Text>No long sign up forms! Ready to spread gratitude in the air? Let’s do it!</Text>
+					<ProgressBar>
+						<ProgressSpan active={activeView == 0} />
+						<ProgressSpan active={activeView == 1} />
+						<ProgressSpan active={activeView == 2} />
+						<ProgressSpan />
+					</ProgressBar>
+				</HeadingWrap>
+				<div>
+					{activeView === 0 && <WriterDetails onSubmit={setActiveView} />}
+					{activeView === 1 && <StoryDetails onSubmit={setActiveView} />}
+					{activeView === 2 && <CoverPhoto onSubmit={setActiveView} />}
+				</div>
+				<BaseNote />
+			</Content>
+			<Footer />
+		</div>
+	)
+}
 
-export default WriteStory;
+export default WriteStory
