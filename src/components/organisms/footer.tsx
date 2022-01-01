@@ -27,7 +27,7 @@ const Footer: React.FC = () => (
 	<Container>
 		<img src='/assets/images/mobile-footer-logo.png' alt='Gratico logo' />
 		<Link href=''>Give feedback</Link>
-		<Link href=''>About us</Link>
+		{/* <Link href=''>About us</Link> */}
 		<Footnote>© 2021 The GratiCo. All Rights Reserved.</Footnote>
 	</Container>
 )

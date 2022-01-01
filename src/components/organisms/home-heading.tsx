@@ -62,12 +62,13 @@ const Heading = styled.h1`
 `
 
 const Body = styled.p`
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 24px;
 	letter-spacing: -0.2px;
 	color: ${({ theme }) => theme.colors.white};
 	text-align: center;
-	margin: 24px 0 32px 0;
+	margin: 32px auto;
+	width: 200px;
 `
 
 const Write = styled(Link)`
@@ -89,6 +90,8 @@ const Write = styled(Link)`
 `
 const Grin = styled.img`
 	margin: 0 4px;
+	width: 12px;
+	height: 12px;
 `
 const Explore = styled(Link)`
 	font-size: 15px;
@@ -170,7 +173,7 @@ const HomeHeading: React.FC = () => {
 				</Body>
 
 				<Write to='/write-story'>
-					What are you grateful for <Grin src='/assets/images/grin.png' alt='grin' /> ?
+					What are you grateful for <Grin src='/assets/images/grin-with-big-eye.png' alt='grin' /> ?
 				</Write>
 
 				<Explore to='/explore'>

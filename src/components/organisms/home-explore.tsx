@@ -30,7 +30,8 @@ const Text = styled.p`
 	letter-spacing: -0.2px;
 	line-height: 24px;
 	text-align: center;
-	padding: 14px 40px 24px;
+	margin: 16px auto 20px;
+	width: 270px;
 `
 const Explore = styled(Link)`
 	font-size: 14px;
