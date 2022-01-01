@@ -94,7 +94,9 @@ const Menu: React.FC = () => (
 			</MenuListItem>
 
 			<MenuListItem>
-				edit your story <MenuListItemIcon src='/assets/icons/edit.svg' />
+				<ItemLink to='/edit-story'>
+					edit your story <MenuListItemIcon src='/assets/icons/edit.svg' />
+				</ItemLink>
 			</MenuListItem>
 
 			<MenuListItem>give feedback</MenuListItem>
