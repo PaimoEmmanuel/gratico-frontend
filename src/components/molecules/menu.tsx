@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Container = styled.div`
-	width: 350px;
+	width: 90%;
 	// height: 352px;
 	display: flex;
 	flex-direction: column;

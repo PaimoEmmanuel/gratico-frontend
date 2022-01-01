@@ -7,7 +7,7 @@ const Container = styled.div`
 		margin-bottom: 16px;
 	}
 
-	@media (min-width: 1000px) {
+	@media (min-width: 600px) {
 		display: none;
 	}
 `

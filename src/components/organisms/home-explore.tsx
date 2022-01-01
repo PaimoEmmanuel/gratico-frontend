@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Confetti from 'react-confetti'
-import { useWindowSize } from 'usehooks-ts'
 
 import BaseNote from '../molecules/base-note'
 
 const Container = styled.div`
 	margin-bottom: 50px;
 
-	@media (min-width: 1000px) {
+	@media (min-width: 600px) {
 		display: none;
 	}
 `
@@ -77,8 +75,6 @@ const Img = styled.img`
 	transition: all 0.3s;
 `
 const HomeExplore: React.FC = () => {
-	const { width, height } = useWindowSize()
-
 	const InitialStories = [
 		{
 			image: '/assets/images/explore-1.png',
@@ -129,7 +125,6 @@ const HomeExplore: React.FC = () => {
 	}, [activeStory, stories])
 	return (
 		<Container>
-			<Confetti width={width} height={height} recycle={false} />
 			<Heading>It’s really easy to not remember what you are grateful for...</Heading>
 			<ImgWrap>
 				{stories.map((story, index) => (

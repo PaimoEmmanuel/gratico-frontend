@@ -15,9 +15,9 @@ const Index: React.FC<{}> = () => {
 	return (
 		<>
 			<LandingView />
-			<DesktopScreen />
 			{animationEnd && (
 				<div>
+					<DesktopScreen />
 					<HomeHeading />
 					<HomeExplore />
 					<Footer />
