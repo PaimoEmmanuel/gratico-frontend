@@ -15,6 +15,13 @@ const Container = styled.div`
 	}
 `
 
+const Logo = styled(Link)`
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	height: 44px;
+`
+
 const Nav = styled.nav`
 	display: flex;
 	justify-content: space-between;
@@ -137,7 +144,9 @@ const HomeHeading: React.FC = () => {
 		<Container>
 			<Confetti width={dimension.width} height={dimension.height} recycle={false} />
 			<Nav>
-				<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
+				<Logo to='/'>
+					<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
+				</Logo>
 				<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen}>
 					<span></span>
 					<span></span>

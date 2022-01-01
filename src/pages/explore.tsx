@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import Dropdown from '../components/molecules/dropdown'
 import ExploreHeading from '../components/organisms/explore-heading'
+import ExploreStories from '../components/organisms/explore-stories'
 import Footer from '../components/organisms/footer'
-import StoryCard from '../components/organisms/story-card'
 // import LandingView from '../components/organisms/landing-view'
 
 const Page = styled.div`
@@ -12,7 +12,7 @@ const Page = styled.div`
 	margin: 0;
 `
 
-const Story = styled.div`
+const Stories = styled.div`
 	background-color: #121212;
 	margin: 0;
 	padding: 40px 0;
@@ -48,36 +48,7 @@ const Explore: React.FC<{}> = () => (
 	<Page>
 		<ExploreHeading />
 		<Dropdown />
-
-		<Story>
-			<StoryCard
-				writerName={story1.writerName}
-				title={story1.title}
-				image={story1.image}
-				date={story1.date}
-				readTime={story1.readTime}
-				likes={story1.likes}
-			/>
-
-			<StoryCard
-				writerName={story2.writerName}
-				title={story2.title}
-				image={story2.image}
-				date={story2.date}
-				readTime={story2.readTime}
-				likes={story2.likes}
-			/>
-
-			<StoryCard
-				writerName={story1.writerName}
-				title={story1.title}
-				image={story1.image}
-				date={story1.date}
-				readTime={story1.readTime}
-				likes={story1.likes}
-			/>
-		</Story>
-
+		<ExploreStories />
 		<Footer />
 	</Page>
 )
