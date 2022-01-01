@@ -7,7 +7,7 @@ import StoryCard from '../organisms/story-card'
 const Stories = styled.div`
 	background-color: #121212;
 	margin: 0;
-	padding: 40px 0;
+	padding: 0;
 `
 
 const MoreActions = styled.div`

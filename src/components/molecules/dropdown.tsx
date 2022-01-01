@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 
+const DropdownWrapper = styled.div<StyleProps>`
+	width: 315px;
+	margin: 34px auto 0;
+	margin-bottom: ${(props) => (props.optionSelected ? '0px' : '40px')};
+`
+
 const SelectBoxContainer = styled.div`
 	height: 44px;
 	border: 1px solid #ffffff;
@@ -8,8 +14,8 @@ const SelectBoxContainer = styled.div`
 	border-radius: 6px;
 	padding: 0;
 	color: #ffffff;
-	width: 315px;
-	margin: 34px auto 0;
+	width: 100%;
+	margin: 0 auto;
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
@@ -62,8 +68,21 @@ const Item = styled.div`
 	width: 100%;
 `
 
+const SortOption = styled.div<StyleProps>`
+	font-family: Graphik;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 26px;
+	letter-spacing: -0.2px;
+	color: #ffffff;
+	margin-top: 48px;
+	display: ${(props) => (props.optionSelected ? 'flex' : 'none')};
+`
+
 interface StyleProps {
-	clicked: boolean
+	clicked?: boolean
+	optionSelected?: boolean
 }
 
 interface ItemInterface {
@@ -81,7 +100,8 @@ const Dropdown: React.FC = () => {
 	const [state, setState] = useState({
 		items: dropdownItems,
 		showItems: false,
-		selectedItem: { value: 'Sort stories by', id: 0 }, // default value
+		selected: false,
+		selectedItem: { value: '', id: 0 }, // default value
 	})
 
 	const dropDown = () => {
@@ -89,14 +109,14 @@ const Dropdown: React.FC = () => {
 	}
 
 	const selectItem = (item: ItemInterface) => {
-		setState((prevState) => ({ ...prevState, selectedItem: item, showItems: false }))
+		setState((prevState) => ({ ...prevState, selected: true, selectedItem: item, showItems: false }))
 	}
 
 	return (
-		<>
+		<DropdownWrapper>
 			<SelectBoxContainer>
 				<SelectBoxSelectedItem onClick={dropDown}>
-					{state.selectedItem.value}
+					Sort stories by
 					<SelectBoxArrow clicked={state.showItems} src='/assets/icons/arrow-down.svg' />
 				</SelectBoxSelectedItem>
 
@@ -112,7 +132,9 @@ const Dropdown: React.FC = () => {
 					))}
 				</SelectBoxItems>
 			</SelectBoxContainer>
-		</>
+
+			<SortOption optionSelected={state.selected}>{state.selectedItem.value}</SortOption>
+		</DropdownWrapper>
 	)
 }
 
