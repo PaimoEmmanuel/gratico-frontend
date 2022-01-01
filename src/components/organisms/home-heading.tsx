@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 // import Confetti from '../atoms/confetti'
 import Confetti from 'react-confetti'
-import { useWindowSize } from 'usehooks-ts'
 import { Link } from 'react-router-dom'
 
 import Menu from '../molecules/menu'
@@ -11,7 +10,7 @@ const Container = styled.div`
 	padding: 32px 20px;
 	background-color: ${({ theme }) => theme.colors.black};
 
-	@media (min-width: 1000px) {
+	@media (min-width: 600px) {
 		display: none;
 	}
 `
@@ -116,10 +115,16 @@ interface StyleProps {
 
 const HomeHeading: React.FC = () => {
 	const [state, setState] = useState({ isNavOpen: false })
-	const { width, height } = useWindowSize()
+	const [dimension, setDimension] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	})
 
-	const wrapRef = useRef(null)
-
+	useEffect(() => {
+		window.addEventListener('resize', () => {
+			setDimension({ width: window.innerWidth, height: window.innerHeight })
+		})
+	}, [])
 
 	const handleNavClick = () => {
 		setState((state) => ({ ...state, isNavOpen: !state.isNavOpen }))
@@ -127,7 +132,7 @@ const HomeHeading: React.FC = () => {
 
 	return (
 		<Container>
-			<Confetti width={width} height={height} recycle={false} />
+			<Confetti width={dimension.width} height={dimension.height} recycle={false} />
 			<Nav>
 				<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
 				<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen}>

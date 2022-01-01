@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Confetti from 'react-confetti'
-import { useWindowSize } from 'usehooks-ts'
 
 const Container = styled.div`
 	position: relative;
@@ -9,15 +9,18 @@ const Container = styled.div`
 	height: 100vh;
 	max-height: 1400px;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column-reverse;
 	justify-content: space-between;
 	align-items: center;
 
-	@media (max-width: 1000px) {
+	@media (max-width: 600px) {
 		display: none;
 	}
 
 	@media (min-width: 1024px) {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 `
 const Logo = styled.img`
@@ -30,11 +33,15 @@ const Logo = styled.img`
 	left: 30px;
 `
 const PhoneImage = styled.img`
-	width: 340px;
+	width: 280px;
 	display: flex;
-	align-self: flex-end;
-	margin-left: 60px;
 	object-fit: cover;
+
+	@media (min-width: 1024px) {
+		width: 340px;
+		margin-left: 60px;
+		align-self: flex-end;
+	}
 
 	@media (min-width: 1100px) {
 		width: 360px;
@@ -53,8 +60,14 @@ const PhoneImage = styled.img`
 `
 
 const GraticoContent = styled.div`
-	align-self: flex-end;
-	margin-bottom: 80px;
+	width: 440px;
+	margin: 0 auto;
+
+	@media (min-width: 1024px) {
+		align-self: flex-end;
+		margin-bottom: 80px;
+		width: auto;
+	}
 
 	@media (min-width: 1300px) {
 		margin-bottom: 160px;
@@ -62,36 +75,51 @@ const GraticoContent = styled.div`
 `
 
 const Gratico = styled.h2`
-	width: 540px;
+	width: 100%;
 	font-family: Butler;
 	font-style: normal;
 	font-weight: 900;
-	font-size: 68px;
-	line-height: 78px;
+	font-size: 50px;
+	line-height: 54px;
 	letter-spacing: -1px;
 	color: #ffffff;
-	margin-bottom: 32px;
+	margin-bottom: 10px;
+
+	@media (min-width: 1024px) {
+		width: 540px;
+		font-size: 68px;
+		line-height: 72px;
+		margin-bottom: 32px;
+	}
 
 	@media (min-width: 1100px) {
 		width: 560px;
 		font-size: 70px;
+		line-height: 74px;
 	}
 
 	@media (min-width: 1300px) {
 		width: 660px;
 		font-size: 72px;
+		line-height: 78px;
 	}
 `
 
 const Instruction = styled.p`
-	width: 530px;
+	width: 100%;
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 22px;
+	font-size: 16px;
 	line-height: 30px;
 	letter-spacing: -1px;
 	color: #ffffff;
+
+	@media (min-width: 1024px) {
+		width: 530px;
+		font-size: 22px;
+		line-height: 30px;
+	}
 `
 
 const GraticoLink = styled.span`
@@ -100,11 +128,20 @@ const GraticoLink = styled.span`
 `
 
 const DesktopScreen: React.FC = () => {
-	const { width, height } = useWindowSize()
+	const [dimension, setDimension] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	})
+
+	useEffect(() => {
+		window.addEventListener('resize', () => {
+			setDimension({ width: window.innerWidth, height: window.innerHeight })
+		})
+	}, [])
 
 	return (
 		<Container>
-			<Confetti width={width} height={height} recycle={false} />
+			<Confetti width={dimension.width} height={dimension.height} recycle={false} />
 			<Logo src='/assets/images/logo-desktop.png' alt='Gratico logo' />
 			<PhoneImage src='/assets/images/gratico-mobile.png' alt='mobile view' />
 			<GraticoContent>
