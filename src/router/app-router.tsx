@@ -1,7 +1,6 @@
 import { Router, Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import HomePage from '../pages/index'
 import { createBrowserHistory } from 'history'
-import { useContext, useEffect, useState } from 'react'
 import WriteStory from '../pages/write-story'
 import ScrollToTop from '../components/molecules/scroll'
 import Explore from '../pages/explore'

@@ -1,4 +1,3 @@
-import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 // import Confetti from '../atoms/confetti'
@@ -120,14 +119,7 @@ const HomeHeading: React.FC = () => {
 	const { width, height } = useWindowSize()
 
 	const wrapRef = useRef(null)
-	useEffect(() => {
-		// gsap.timeline().from(wrapRef.current, {
-		//   duration: 1,
-		//   ease: "power2",
-		//   y: "100vh",
-		//   opacity: 0,
-		// });
-	})
+
 
 	const handleNavClick = () => {
 		setState((state) => ({ ...state, isNavOpen: !state.isNavOpen }))
