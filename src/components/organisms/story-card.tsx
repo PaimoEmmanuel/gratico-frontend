@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Card = styled.div`
@@ -21,6 +22,11 @@ const WriterName = styled.h4`
 	line-height: 15px;
 	letter-spacing: -0.2px;
 	text-transform: uppercase;
+`
+
+const ViewStoryRoute = styled(Link)`
+	text-decoration: none;
+	color: #ffffff;
 `
 
 const StoryImage = styled.img`
@@ -76,8 +82,8 @@ const HeartIcon = styled.img`
 `
 
 interface StoryProps {
-	id?: number
-	writerName?: string
+	id: number
+	author: string
 	title: string
 	cover_img?: string
 	date?: string
@@ -85,28 +91,32 @@ interface StoryProps {
 	likes?: number
 }
 
-const StoryCard: React.FC<StoryProps> = ({ writerName, cover_img, title, date, readTime, likes }) => {
+const StoryCard: React.FC<StoryProps> = ({ id, author, cover_img, title, date, readTime, likes }) => {
 	return (
 		<Card>
-			<WriterName>{writerName}</WriterName>
-			<StoryImage
-				src={
-					cover_img !== ''
-						? cover_img
-						: 'https://gratico-uploads.s3.us-east-2.amazonaws.com/images/RPQjDQRWpeT3VZj9PIFGPCMAwnNDfbLwkxWThCO3.jpg'
-				}
-			/>
-			<StoryTitle>{title}</StoryTitle>
-			<StoryMeta>
-				<StoryMetaLeft>
-					{date}
-					<Ellipse src='/assets/images/ellipse-separation.svg' />
-					{readTime} min read
-				</StoryMetaLeft>
-				<StoryMetaRight>
-					<HeartIcon src='/assets/images/heart.svg' /> {likes} likes
-				</StoryMetaRight>
-			</StoryMeta>
+			<WriterName>{author}</WriterName>
+			<ViewStoryRoute to={`/story/${id}`}>
+				<StoryImage
+					src={
+						cover_img !== ''
+							? cover_img
+							: 'https://gratico-uploads.s3.us-east-2.amazonaws.com/images/RPQjDQRWpeT3VZj9PIFGPCMAwnNDfbLwkxWThCO3.jpg'
+					}
+				/>
+
+				<StoryTitle>{title}</StoryTitle>
+
+				<StoryMeta>
+					<StoryMetaLeft>
+						{date}
+						<Ellipse src='/assets/images/ellipse-separation.svg' />
+						{readTime} min read
+					</StoryMetaLeft>
+					<StoryMetaRight>
+						<HeartIcon src='/assets/images/heart.svg' /> {likes} likes
+					</StoryMetaRight>
+				</StoryMeta>
+			</ViewStoryRoute>
 		</Card>
 	)
 }
