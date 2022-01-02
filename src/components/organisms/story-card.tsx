@@ -76,19 +76,20 @@ const HeartIcon = styled.img`
 `
 
 interface StoryProps {
-	writerName: string
-	image?: string
+	id?: number
+	writerName?: string
 	title: string
-	date: string
-	readTime: number
-	likes: number
+	cover_img?: string
+	date?: string
+	readTime?: number
+	likes?: number
 }
 
-const StoryCard: React.FC<StoryProps> = ({ writerName, image, title, date, readTime, likes }) => {
+const StoryCard: React.FC<StoryProps> = ({ writerName, cover_img, title, date, readTime, likes }) => {
 	return (
 		<Card>
 			<WriterName>{writerName}</WriterName>
-			<StoryImage src={image} />
+			<StoryImage src={cover_img} />
 			<StoryTitle>{title}</StoryTitle>
 			<StoryMeta>
 				<StoryMetaLeft>

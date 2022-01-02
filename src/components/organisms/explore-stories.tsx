@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import StoryCard from '../organisms/story-card'
 
@@ -53,35 +54,39 @@ const ShareStory = styled(Link)`
 `
 
 interface StoryDataProps {
-	writerName: string
+	id: number
+	writerName?: string
 	title: string
-	image?: string
-	date: string
-	readTime: number
-	likes: number
+	cover_img?: string
+	date?: string
+	readTime?: number
+	likes?: number
 }
 
 const storylist: StoryDataProps[] = [
 	{
+		id: 1,
 		writerName: 'Bolatito Akinmurewa',
 		title: 'This year was when Jesus taught me to love my neighbours',
-		image: '/assets/images/storyImg.png',
+		cover_img: '/assets/images/storyImg.png',
 		date: 'Jan 1st',
 		readTime: 6,
 		likes: 15,
 	},
 	{
+		id: 2,
 		writerName: 'Jesulademi Ajimosun',
 		title: 'I found the one this year',
-		// image: '',
+		// cover_img: '',
 		date: 'Jan 1st',
 		readTime: 8,
 		likes: 20,
 	},
 	{
+		id: 3,
 		writerName: 'Bolatito Akinmurewa',
 		title: 'This year was when Jesus taught me to love my neighbours',
-		image: '/assets/images/storyImg.png',
+		cover_img: '/assets/images/storyImg.png',
 		date: 'Jan 1st',
 		readTime: 6,
 		likes: 15,
@@ -89,13 +94,45 @@ const storylist: StoryDataProps[] = [
 ]
 
 const ExploreStories: React.FC = () => {
+	const [state, setState] = useState({ stories: storylist })
+
+	// use axios
+	const getStoriesFetch = async () => {
+		fetch('http://api.gratico.xyz/api/stories')
+			.then((response) => response.json())
+			.then((data) => console.log(data))
+	}
+
+	const filterResponse = (data: any) => {
+		// should take an array of objects
+		// map this array into a new array of new objects
+	}
+
+	const getStories = async () => {
+		axios.get('http://api.gratico.xyz/api/stories').then((res) => {
+			let result = res.data
+			let stories = result.data
+
+			setState((state) => ({ ...state, stories: [...state.stories].concat(stories) }))
+			console.log(state)
+			// setState((state) => ({ ...state, stories: [...state.stories] }))
+			// return stories
+		})
+	}
+
+	useEffect(() => {
+		getStories()
+		console.log(state)
+	}, [])
+
 	return (
 		<Stories>
-			{storylist.map((story) => (
+			{state.stories.map((story) => (
 				<StoryCard
-					writerName={story.writerName}
+					key={story.id}
+					writerName={story.writerName ? story.writerName : 'Chibs'}
 					title={story.title}
-					image={story.image}
+					cover_img={story.cover_img}
 					date={story.date}
 					readTime={story.readTime}
 					likes={story.likes}
