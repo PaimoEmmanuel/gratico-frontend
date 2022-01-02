@@ -1,12 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
-import CoverPhoto from "../components/organisms/cover-photo";
 import Footer from "../components/organisms/footer";
-import StoryDetails from "../components/organisms/story-details";
-import WriterDetails from "../components/organisms/writer-details";
 import { StoryContext } from "../contexts/write-story-context";
 
 // FDFAF2
@@ -111,22 +108,18 @@ const Like = styled.button`
     margin-right: 10px;
   }
 `;
-interface PreviewProps {
-  email: string;
-  name: string;
-  title: string;
-  content: string;
-  image: string;
-  date: string;
-  likes: number;
-  views: number;
-  setLikes: React.Dispatch<React.SetStateAction<number>>;
-}
+
 const Preview: React.FC = () => {
-  const { story, setStory } = useContext(StoryContext);
+  const { story } = useContext(StoryContext);
   const { title, name, date, content, image } = story;
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
-  return (
+  useEffect(() => {
+    setLoading(false);
+  }, [story]);
+  return loading ? (
+    <></>
+  ) : (
     <div>
       <Navigation />
       <Content>
@@ -143,34 +136,7 @@ const Preview: React.FC = () => {
             <Date>6 min read</Date>
           </Details>
           <Img src={image} />
-          <Body dangerouslySetInnerHTML={{ __html: content }}>
-            {/* As you read this, I am spending time with my family celebrating the
-            Jewish New Year. It’s a thoughtful time for me, what has passed and
-            what is to come? <br /> <br /> I’m so thankful for this year; a year
-            of great learning, growth, expansion and some tough lessons too. I’m
-            so grateful for the people who have inspired and supported me along
-            the way. <br />
-            <br /> And I’m so grateful to you; for following me, for reading my
-            stories, for responding (or not!), for being in my life and allowing
-            me into yours. <br />
-            <br /> I wish you a healthy, happy and inspired year to come! Much
-            love and blessings, Lisa <br />
-            <br /> Here’s this week’s story! A Shocking Story Have your own
-            words ever shocked you? Have you noticed that sometimes your story
-            is not quite what you think it is? What do you do when yourown story
-            doesn’t have a happy end? I was shocked as the words flew out of my
-            mouth like a lethal weapon. I knew I had very strong feelings for
-            him, but I didn’t imagine the ferocious force of the story that
-            emerged. My whole body shook and he was stunned. We both were. It
-            started 6 months before. I was young and unattached. And I mean
-            really unattached. I had been travelling for some time and taken a
-            job locally. We met at sunset, in the garden besidethe water. We had
-            all been eating strawberries and cream and the evening was beginning
-            to get chilly. I suggested Irish Coffee and he followed me into the
-            kitchen. We started to talk. We started to laugh. We felt like we
-            had known each other for centuries. We finished each other’s 
-            sentences.*/}
-          </Body>
+          <Body dangerouslySetInnerHTML={{ __html: content }}></Body>
           <Stat>
             <p>
               <Like>

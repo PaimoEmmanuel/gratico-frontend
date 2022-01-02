@@ -27,7 +27,7 @@ export const StoryContext = createContext<IUserContext>({
 const AuthContextProvider: React.FC = ({ children }) => {
   const [story, dispatch] = useReducer(StoryReducer, initialState);
   const setStory = (story: storyStateProps) =>
-    dispatch({ type: "UPDATE_USER", story });
+    dispatch({ type: "UPDATE_STORY", story });
   return (
     <StoryContext.Provider value={{ story, setStory }}>
       {children}
