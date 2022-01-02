@@ -46,19 +46,12 @@ const WriteStory: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
-  const [date, setDate] = useState("");
-  const [likes, setLikes] = useState(0);
-  const [views, setViews] = useState(0);
-
   const { story, setStory } = useContext(StoryContext);
 
   const handlePreview = () => {
-    console.log("jkbbjbjk");
-
-    setStory({ ...story, email, name, title, content, image });
+    const date = new Date().toString().slice(4, 10);
+    setStory({ ...story, email, name, title, content, image, date });
   };
-  const handleStoryDetails = () => {};
-  const handleCoverPhoto = () => {};
   return (
     <div>
       <Navigation />
