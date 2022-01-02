@@ -73,6 +73,8 @@ const MenuFoot = styled.p`
 `
 
 const RedHeartImg = styled.img`
+	width: 14px;
+	height: 14px;
 	text-align: center;
 	margin: auto;
 	object-fit: cover;
