@@ -89,7 +89,13 @@ const StoryCard: React.FC<StoryProps> = ({ writerName, cover_img, title, date, r
 	return (
 		<Card>
 			<WriterName>{writerName}</WriterName>
-			<StoryImage src={cover_img} />
+			<StoryImage
+				src={
+					cover_img !== ''
+						? cover_img
+						: 'https://gratico-uploads.s3.us-east-2.amazonaws.com/images/RPQjDQRWpeT3VZj9PIFGPCMAwnNDfbLwkxWThCO3.jpg'
+				}
+			/>
 			<StoryTitle>{title}</StoryTitle>
 			<StoryMeta>
 				<StoryMetaLeft>

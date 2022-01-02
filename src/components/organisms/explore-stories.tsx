@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { getAllStories } from '../../services/story'
 import axios from 'axios'
 
 import StoryCard from '../organisms/story-card'
+import { dataFilter } from '../../utils/dataFilter'
 
 const Stories = styled.div`
 	background-color: #121212;
@@ -94,14 +96,7 @@ const storylist: StoryDataProps[] = [
 ]
 
 const ExploreStories: React.FC = () => {
-	const [state, setState] = useState({ stories: storylist })
-
-	// use axios
-	const getStoriesFetch = async () => {
-		fetch('http://api.gratico.xyz/api/stories')
-			.then((response) => response.json())
-			.then((data) => console.log(data))
-	}
+	const [stories, setStories] = useState(storylist)
 
 	const filterResponse = (data: any) => {
 		// should take an array of objects
@@ -109,25 +104,27 @@ const ExploreStories: React.FC = () => {
 	}
 
 	const getStories = async () => {
-		axios.get('http://api.gratico.xyz/api/stories').then((res) => {
-			let result = res.data
-			let stories = result.data
+		getAllStories()
+			// axios
+			// 	.get('http://api.gratico.xyz/api/stories')
+			.then((res) => {
+				let cleanData = dataFilter(res.data.data)
+				// console.log(cleanData)
 
-			setState((state) => ({ ...state, stories: [...state.stories].concat(stories) }))
-			console.log(state)
-			// setState((state) => ({ ...state, stories: [...state.stories] }))
-			// return stories
-		})
+				setStories([...stories].concat(cleanData))
+			})
+			.catch((error) => {
+				console.log('error', error)
+			})
 	}
 
 	useEffect(() => {
 		getStories()
-		console.log(state)
 	}, [])
 
 	return (
 		<Stories>
-			{state.stories.map((story) => (
+			{stories.map((story) => (
 				<StoryCard
 					key={story.id}
 					writerName={story.writerName ? story.writerName : 'Chibs'}
@@ -152,8 +149,8 @@ const ExploreStories: React.FC = () => {
 						xmlns='http://www.w3.org/2000/svg'
 					>
 						<path
-							fill-rule='evenodd'
-							clip-rule='evenodd'
+							fillRule='evenodd'
+							clipRule='evenodd'
 							d='M5.46405 0H6.536V5.31703H6.5359C6.53652 5.48189 6.67001 5.61528 6.83477 5.6159H11.9999V6.53605H6.83477C6.67001 6.53668 6.53651 6.67006 6.5359 6.83482V12H5.46395V6.83482H5.46405C5.46342 6.67006 5.32994 6.53667 5.16518 6.53605H0V5.6159H5.16518C5.32994 5.61527 5.46344 5.48189 5.46405 5.31703V0Z'
 							fill='#FFFFF'
 						/>
