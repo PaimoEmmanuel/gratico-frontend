@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { StoryContext } from "../../contexts/write-story-context";
 
 const Button = styled.button`
   height: 50px;
@@ -47,20 +49,31 @@ const Select = styled.label`
 `;
 interface WriterDetailsProps {
   onSubmit: any;
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+  handlePreview: () => void;
 }
-const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
-  const [file, setFile] = useState("");
+const CoverPhoto: React.FC<WriterDetailsProps> = ({
+  onSubmit,
+  image,
+  setImage,
+  handlePreview,
+}) => {
+  const history = useHistory();
+
   return (
     <Container>
       <Label>Upload a cover photo</Label>
       <PictureFrame>
-        {file && <img src={file} style={{ width: "100%" }} />}
+        {image && <img src={image} style={{ width: "100%" }} />}
       </PictureFrame>
       <Select htmlFor="file">Select an image</Select>
       <input
         style={{ visibility: "hidden" }}
         onChange={(e) => {
-          setFile(e.target.files ? URL.createObjectURL(e.target.files[0]) : "");
+          setImage(
+            e.target.files ? URL.createObjectURL(e.target.files[0]) : ""
+          );
         }}
         type="file"
         name="file"
@@ -71,6 +84,8 @@ const CoverPhoto: React.FC<WriterDetailsProps> = ({ onSubmit }) => {
           e.preventDefault();
           onSubmit(2);
           window.scrollTo(0, 0);
+          handlePreview()
+          history.push("/preview");
         }}
       >
         Preview story

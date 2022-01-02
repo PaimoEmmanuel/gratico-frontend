@@ -1,12 +1,13 @@
-import { Router, Switch, Route, Redirect, withRouter } from 'react-router-dom'
-import HomePage from '../pages/index'
-import { createBrowserHistory } from 'history'
-import WriteStory from '../pages/write-story'
+import { Router, Switch, Route, Redirect, withRouter } from "react-router-dom";
+import HomePage from "../pages/index";
+import { createBrowserHistory } from "history";
+import WriteStory from "../pages/write-story";
+import ScrollToTop from "../components/molecules/scroll";
 import EditStory from '../pages/edit-story'
-import ScrollToTop from '../components/molecules/scroll'
-import Explore from '../pages/explore'
+import Explore from "../pages/explore";
+import Preview from "../pages/preview";
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 const AppRouter = () => {
 	return (
@@ -26,4 +27,4 @@ const AppRouter = () => {
 	)
 }
 
-export default AppRouter
+export default AppRouter;
