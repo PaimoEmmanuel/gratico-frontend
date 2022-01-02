@@ -114,12 +114,10 @@ const Preview: React.FC = () => {
   const { title, name, date, content, image } = story;
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  useEffect(() => {
-    setLoading(false);
-  }, [story]);
-  return loading ? (
-    <></>
-  ) : (
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, [story]);
+  return (
     <div>
       <Navigation />
       <Content>
