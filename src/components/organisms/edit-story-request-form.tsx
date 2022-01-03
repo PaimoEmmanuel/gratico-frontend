@@ -125,7 +125,7 @@ const EditStoryRequestForm: React.FC<EditStoryRequestFormProps> = ({ onSubmit })
 		<Form>
 			<Email>
 				<Input
-					type='text'
+					type='email'
 					placeholder='Input your email address here'
 					onChange={(e) => {
 						e.preventDefault()

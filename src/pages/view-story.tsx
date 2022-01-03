@@ -162,10 +162,9 @@ let testStory: IStory = {
 
 const ViewStory: React.FC<IStory> = () => {
 	const [story, setStory] = useState(testStory)
-	// const { id, title, author, date, content, cover_img } = story
 	const [loading, setLoading] = useState(true)
 	const [likes, setLikes] = useState(0)
-	const likeRef = useRef(null)
+	const [myLikes, setMyLikes] = useState(0)
 	const history = useHistory()
 
 	const { storyID } = useParams<{ storyID: string }>()
@@ -177,7 +176,11 @@ const ViewStory: React.FC<IStory> = () => {
 			.then((res) => {
 				let cleanData = singleDataFilter(res.data)
 				setStory(cleanData)
+
 				setLoading(false)
+
+				let incomingLikes = cleanData.likes
+				setLikes(incomingLikes ? incomingLikes : 0)
 			})
 			.catch((err) => {
 				console.log('error', err)
@@ -185,11 +188,17 @@ const ViewStory: React.FC<IStory> = () => {
 	}, [])
 
 	const updateLike = () => {
-		likeStory(storyID).then((res) => {
-			console.log(res)
-		})
+		if (myLikes < 50) {
+			likeStory(storyID).then((res) => {
+				console.log(res)
+			})
 
-		likes < 50 ? setLikes(likes + 1) : setLikes(likes)
+			setLikes(likes + 1)
+			setMyLikes(myLikes + 1)
+		} else {
+			setLikes(likes)
+			setMyLikes(myLikes)
+		}
 	}
 
 	return (
@@ -224,8 +233,6 @@ const ViewStory: React.FC<IStory> = () => {
 									id='like'
 								>
 									<svg
-										// id='like'
-										// ref={likeRef}
 										width='20'
 										height='18'
 										viewBox='0 0 20 18'
