@@ -83,7 +83,7 @@ const HomeExplore: React.FC = () => {
 			<Title>Just breathe</Title>
 			<Text>Documenting &amp; learning from our stories help us better prepare for the new year.</Text>
 			{/* <div>progress bar</div> */}
-			<Write to='/write-story'>
+			<Write to='/write'>
 				Share your story
 				<svg
 					width='12'

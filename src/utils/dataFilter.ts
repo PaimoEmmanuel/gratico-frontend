@@ -1,6 +1,6 @@
 interface IStory {
 	id: number
-	writerName?: string
+	author?: string
 	title: string
 	content?: string
 	cover_img?: string
@@ -47,7 +47,7 @@ export const dataFilter = (data: []) => {
 
 		let filteredStory: IStory = {
 			id: incomingStory.id,
-			writerName: incomingStory.user.name,
+			author: incomingStory.user.name,
 			title: incomingStory.title,
 			content: incomingStory.body,
 			cover_img: incomingStory.cover_img,
@@ -60,4 +60,21 @@ export const dataFilter = (data: []) => {
 	})
 
 	return filteredData
+}
+
+export const singleDataFilter = (data: any) => {
+	let formattedDate = dateFormatter(data.created_at)
+
+	let filteredStory: IStory = {
+		id: data.id,
+		author: data.user.name,
+		title: data.title,
+		content: data.body,
+		cover_img: data.cover_img,
+		date: formattedDate,
+		readTime: data.read_time,
+		likes: data.likes,
+	}
+
+	return filteredStory
 }

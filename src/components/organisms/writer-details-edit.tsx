@@ -3,7 +3,7 @@ import { EditorState, ContentState } from "draft-js";
 import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Editor } from "react-draft-wysiwyg";
 import { convertToHTML, convertFromHTML } from "draft-convert";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const Form = styled.form`
   margin: 48px 0 164px 0;
@@ -37,7 +37,7 @@ const Email = styled.div`
 `;
 const Name = styled.div`
   padding: 30px 32px;
-  //   border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
 `;
 const Button = styled.button`
   height: 50px;
@@ -58,21 +58,23 @@ const Back = styled.button`
   margin: 0 auto;
   margin-top: 24px;
 `;
-
-interface StoryDetailsProps {
-  onSubmit: any;
-  title: string;
+interface WriterDetailsProps {
+  onSubmit: React.Dispatch<React.SetStateAction<number>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
+  name: string;
+  title: string;
   content: string;
   setContent: React.Dispatch<React.SetStateAction<string>>;
+  setName: React.Dispatch<React.SetStateAction<string>>;
 }
-
-const StoryDetails: React.FC<StoryDetailsProps> = ({
-  onSubmit,
+const WriterDetailsEdit: React.FC<WriterDetailsProps> = ({
   title,
   setTitle,
+  name,
+  setName,
   content,
   setContent,
+  onSubmit,
 }) => {
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(convertFromHTML(content))
@@ -85,17 +87,24 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({
   return (
     <Form>
       <Email>
-        <Label htmlFor="">Give your story a title, something nice!</Label>
+        <Label>Edit your name</Label>
+        <Input
+          type="text"
+          placeholder="Type the title here"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <InputNote>You can edit your stories using this email.</InputNote>
+      </Email>
+      <Name>
+        <Label>Edit your story title</Label>
         <Input
           type="text"
           placeholder="Type the title here"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <InputNote>
-          E.g. The year i found hope, God helped me make moves this year! etc
-        </InputNote>
-      </Email>
+      </Name>
       <Name>
         <Label htmlFor="">This is where you type the whole gist</Label>
         <Editor
@@ -151,4 +160,4 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({
     </Form>
   );
 };
-export default StoryDetails;
+export default WriterDetailsEdit;

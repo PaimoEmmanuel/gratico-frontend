@@ -181,7 +181,7 @@ const HomeHeading: React.FC = () => {
 					needs right now.
 				</Body>
 
-				<Write to='/write-story'>
+				<Write to='/write'>
 					What are you grateful for <Grin src='/assets/images/grin-with-big-eye.png' alt='grin' /> ?
 				</Write>
 
