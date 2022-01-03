@@ -89,6 +89,7 @@ interface StoryProps {
 	date?: string
 	readTime?: number
 	likes?: number
+	views?: number
 }
 
 const StoryCard: React.FC<StoryProps> = ({ id, author, cover_img, title, date, readTime, likes }) => {

@@ -7,6 +7,7 @@ interface IStory {
 	date?: string
 	readTime?: number
 	likes?: number
+	views?: number
 }
 
 const dateFormatter = (date: string) => {
@@ -54,6 +55,7 @@ export const dataFilter = (data: []) => {
 			date: formattedDate,
 			readTime: incomingStory.read_time,
 			likes: incomingStory.likes,
+			views: incomingStory.views,
 		}
 
 		filteredData.push(filteredStory)
@@ -74,6 +76,7 @@ export const singleDataFilter = (data: any) => {
 		date: formattedDate,
 		readTime: data.read_time,
 		likes: data.likes,
+		views: data.views,
 	}
 
 	return filteredStory
