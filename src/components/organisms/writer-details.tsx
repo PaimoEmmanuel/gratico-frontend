@@ -83,7 +83,7 @@ const WriterDetails: React.FC<WriterDetailsProps> = ({ email, setEmail, name, se
 			<Email>
 				<Label>Let’s start with your email, it’s really useful!</Label>
 				<Input
-					type='text'
+					type='email'
 					placeholder='Input your email address here'
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}

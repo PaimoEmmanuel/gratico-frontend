@@ -20,7 +20,7 @@ export const sendEditStoryLink = (emailId: string) => {
 }
 
 export const likeStory = (storyId: string) => {
-	return request.post(`/stories/${storyId}/like`)
+	return request.post(`/story/${storyId}/likes`)
 }
 
 export const postStory = (userToken: string) => {
