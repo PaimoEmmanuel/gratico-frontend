@@ -1,7 +1,7 @@
 import { request } from '.'
 
-export const getAllStories = () => {
-	return request.get(`/stories`)
+export const getAllStories = (pageNumner: number) => {
+	return request.get(`/stories?page=${pageNumner}`)
 }
 
 export const getOneStory = (storyId: string) => {
