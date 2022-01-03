@@ -85,7 +85,7 @@ const Menu: React.FC = () => (
 	<Container>
 		<MenuList>
 			<MenuListItem>
-				<ItemLink to='/write-story'>upload your story</ItemLink>
+				<ItemLink to='/write'>upload your story</ItemLink>
 			</MenuListItem>
 
 			<MenuListItem>
@@ -93,7 +93,7 @@ const Menu: React.FC = () => (
 			</MenuListItem>
 
 			<MenuListItem>
-				<ItemLink to='/edit-story'>edit your story</ItemLink>
+				<ItemLink to='/edit'>edit your story</ItemLink>
 			</MenuListItem>
 
 			<MenuListItem>leave a feedback</MenuListItem>

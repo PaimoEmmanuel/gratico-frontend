@@ -46,7 +46,7 @@ export const dataFilter = (data: []) => {
 		let formattedDate = dateFormatter(incomingStory.created_at)
 
 		let filteredStory: IStory = {
-			id: incomingStory.id,
+			id: incomingStory.uuid,
 			author: incomingStory.user.name,
 			title: incomingStory.title,
 			content: incomingStory.body,
