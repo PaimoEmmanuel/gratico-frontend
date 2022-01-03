@@ -19,8 +19,8 @@ export const sendEditStoryLink = (emailId: string) => {
 	return request.post(`/user/${emailId}/stories/edit`)
 }
 
-export const likeStory = (storyId: string, userToken: string) => {
-	return request.post(`/stories/${storyId}/like`, {}, { headers: { Authorization: `Bearer ${userToken}` } })
+export const likeStory = (storyId: string) => {
+	return request.post(`/stories/${storyId}/like`)
 }
 
 export const postStory = (userToken: string) => {
