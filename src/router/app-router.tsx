@@ -8,6 +8,7 @@ import Explore from "../pages/explore";
 import Preview from "../pages/preview";
 import ViewStory from "../pages/view-story";
 import EditStory from "../pages/edit-story";
+import ShareStory from "../pages/share-story";
 
 const history = createBrowserHistory();
 
@@ -32,6 +33,7 @@ const AppRouter = () => {
             exact={true}
           />
           <Route path="/preview" component={Preview} exact={true} />
+          <Route path="/share-story" component={ShareStory} exact={true} />
           <Redirect to="/not-found" />
         </Switch>
       </>
