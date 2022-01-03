@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { getAllStories } from '../../services/story'
-import axios from 'axios'
+import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { getAllStories } from "../../services/story";
+import axios from "axios";
 
-import StoryCard from '../organisms/story-card'
-import { dataFilter } from '../../utils/dataFilter'
+import StoryCard from "../organisms/story-card";
+import { dataFilter } from "../../utils/dataFilter";
 
 const Stories = styled.div`
   background-color: #121212;
@@ -15,8 +15,8 @@ const Stories = styled.div`
 `;
 
 const MoreActions = styled.div`
-	margin: 40px auto;
-`
+  margin: 40px auto;
+`;
 
 const SeeMoreStories = styled.button`
   font-size: 15px;
@@ -36,35 +36,35 @@ const SeeMoreStories = styled.button`
 `;
 
 const ShareStory = styled(Link)`
-	font-size: 14px;
-	line-height: 15px;
-	text-align: center;
-	letter-spacing: -0.2px;
-	text-decoration-line: underline;
-	color: #ffffff;
-	padding: 10px;
-	border: 1px solid #ffffff;
-	border-radius: 4px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: fit-content;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.2px;
+  text-decoration-line: underline;
+  color: #ffffff;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
 
-	& svg {
-		width: 12px;
-		margin-left: 8px;
-	}
-`
+  & svg {
+    width: 12px;
+    margin-left: 8px;
+  }
+`;
 
 interface StoryDataProps {
-	id: number
-	author?: string
-	title: string
-	cover_img?: string
-	date?: string
-	readTime?: number
-	likes?: number
+  id: number;
+  author?: string;
+  title: string;
+  cover_img?: string;
+  date?: string;
+  readTime?: number;
+  likes?: number;
 }
 
 const storylist: StoryDataProps[] = [
@@ -78,8 +78,10 @@ const storylist: StoryDataProps[] = [
     likes: 15,
   },
 ];
-
-const ExploreStories: React.FC = () => {
+interface ExploreStoriesProps {
+  filterBy?: "popular" | "newest" | "oldest";
+}
+const ExploreStories: React.FC<ExploreStoriesProps> = ({ filterBy }) => {
   const [stories, setStories] = useState(storylist);
   const [initialLoading, setInitialLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -91,7 +93,7 @@ const ExploreStories: React.FC = () => {
     // map this array into a new array of new objects
   };
   const getStories = async () => {
-    getAllStories(currentPage)
+    getAllStories(currentPage, filterBy)
       .then((res) => {
         const cleanData = dataFilter(res.data.data);
         setNoOfPages(res.data.last_page);
@@ -110,7 +112,7 @@ const ExploreStories: React.FC = () => {
 
   useEffect(() => {
     getStories();
-  }, [currentPage]);
+  }, [currentPage, filterBy]);
 
   return (
     <Stories>
@@ -121,7 +123,7 @@ const ExploreStories: React.FC = () => {
           {stories.map((story) => (
             <StoryCard
               key={story.id}
-			  id={story.id}
+              id={story.id}
               author={story.author ? story.author : "Chibs"}
               title={story.title}
               cover_img={story.cover_img}
