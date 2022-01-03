@@ -147,7 +147,7 @@ const HomeExplore: React.FC = () => {
 				did you meet someone special or some set of people that switched things up for good this year?
 			</Text>
 			{/* <div>progress bar</div> */}
-			<Write to='/write-story'>
+			<Write to='/write'>
 				Share your story
 				<svg
 					width='12'
