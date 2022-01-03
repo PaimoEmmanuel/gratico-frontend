@@ -19,11 +19,13 @@ const Heading = styled.h3`
 	text-align: center;
 `
 const Title = styled.p`
-    font-weight: 600;
-    line-height: 17.6px
-    letter-spacing: -0.2px;
-    text-align: center;
-    margin-top: 44px;
+	font-size: 16px;
+	line-height: 18px;
+	letter-spacing: -0.2px;
+	text-align: center;
+	font-weight: 900;
+	margin-top: 32px;
+	color: #090913;
 `
 const Text = styled.p`
 	font-size: 15px;
@@ -31,7 +33,7 @@ const Text = styled.p`
 	line-height: 24px;
 	text-align: center;
 	margin: 16px auto 20px;
-	width: 270px;
+	width: 231px;
 `
 const Explore = styled(Link)`
 	font-size: 14px;
@@ -65,87 +67,21 @@ const Write = styled(Link)`
 		margin-left: 5px;
 	}
 `
-const ImgWrap = styled.div`
-	padding: 0 40px;
-	display: flex;
-	overflow: hidden;
-`
+
 const Img = styled.img`
 	width: 70%;
 	margin-left: 15%;
 	transition: all 0.3s;
 `
 const HomeExplore: React.FC = () => {
-	const InitialStories = [
-		{
-			image: '/assets/images/explore-1.png',
-			title: 'Met the one!',
-			transform: 'rotate(0deg) scale(1)',
-		},
-		{
-			image: '/assets/images/explore-2.png',
-			title: 'Met the two!',
-			transform: 'rotate(8deg) scale(0.9)',
-		},
-		// {
-		//   image: "/assets/images/explore-3.png",
-		//   title: "Met the three!",
-		//   transform: "rotate(8deg) scale(0.9)",
-		// },
-		// {
-		//   image: "/assets/images/explore-4.png",
-		//   title: "Met the four!",
-		//   transform: "rotate(8deg) scale(0.9)",
-		// },
-	]
-	const [stories, setStories] = useState(InitialStories)
-	const [activeStory, setActiveStory] = useState(0)
-
-	const switchStory = (activeStory: number) => {
-		let newArr = stories
-		stories.forEach((story, index) => {
-			if (activeStory === index) {
-				if (index === 0) {
-					newArr[index] = { ...story, transform: 'translateX(00%)' }
-				} else {
-					newArr[index] = { ...story, transform: 'translateX(-100%)' }
-				}
-			} else if (activeStory < index) {
-				newArr[index] = { ...story, transform: 'rotate(8deg) scale(0.9)' }
-			} else {
-				newArr[index] = {
-					...story,
-					transform: `rotate(-8deg) scale(0.9) translateX(-${(index + 1) * 100}%)`,
-				}
-			}
-		})
-		setStories(newArr)
-	}
-	useEffect(() => {
-		console.log(stories)
-	}, [activeStory, stories])
 	return (
 		<Container>
-			<Heading>It’s really easy to not remember what you are grateful for...</Heading>
-			<ImgWrap>
-				{stories.map((story, index) => (
-					<Img
-						key={story.image}
-						src={story.image}
-						style={{ transform: story.transform }}
-						alt={story.title}
-						onClick={() => {
-							setActiveStory(index)
-							switchStory(index)
-						}}
-					/>
-				))}
-				{/* <Img src="/assets/images/explore-1.png" alt="" /> */}
-			</ImgWrap>
-			<Title>{stories[activeStory].title}</Title>
-			<Text>
-				did you meet someone special or some set of people that switched things up for good this year?
-			</Text>
+			<Heading>Had many wins or losses last year? Doesn’t matter!</Heading>
+
+			<Img src={'/assets/images/explore-new.png'} alt='explore' />
+
+			<Title>Just breathe</Title>
+			<Text>Documenting &amp; learning from our stories help us better prepare for the new year.</Text>
 			{/* <div>progress bar</div> */}
 			<Write to='/write-story'>
 				Share your story

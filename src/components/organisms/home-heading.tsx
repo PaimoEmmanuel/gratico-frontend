@@ -75,7 +75,7 @@ const Body = styled.p`
 	color: ${({ theme }) => theme.colors.white};
 	text-align: center;
 	margin: 32px auto;
-	width: 200px;
+	width: 236px;
 `
 
 const Write = styled(Link)`
@@ -177,8 +177,8 @@ const HomeHeading: React.FC = () => {
 				<Img src='/assets/images/heading.png' alt='Gratico' />
 				<Heading>2021 was sure a rollercoaster!</Heading>
 				<Body>
-					...with the many happenings! Let’s spread gratitude in the air, encourage someone out
-					there.
+					...what did you learn, accomplish or are grateful for? That might just be what someone
+					needs right now.
 				</Body>
 
 				<Write to='/write-story'>

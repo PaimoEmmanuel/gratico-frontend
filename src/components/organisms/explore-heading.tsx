@@ -80,6 +80,7 @@ const SubHeading = styled.p`
 	letter-spacing: -0.2px;
 	color: ${({ theme }) => theme.colors.white};
 	margin-top: 7px;
+	width: 250px;
 `
 
 const emojiAnimation = keyframes`
@@ -99,8 +100,8 @@ const emojiAnimation = keyframes`
 
 const Grin = styled.img`
 	margin: 0 6px;
-	width: 30px;
-	height: 30px;
+	width: 34px;
+	height: 34px;
 	animation: ${emojiAnimation} 2s infinite;
 `
 
@@ -134,7 +135,9 @@ const ExploreHeading: React.FC = () => {
 				<Heading>
 					Explore Stories <Grin src='/assets/images/grin.png' alt='' />{' '}
 				</Heading>
-				<SubHeading>Immerse yourself in everyone’s gratitude</SubHeading>
+				<SubHeading>
+					That motivation you need might just be in one of these stories! Dig in!
+				</SubHeading>
 			</Header>
 		</Container>
 	)

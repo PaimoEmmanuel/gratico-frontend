@@ -34,7 +34,7 @@ const MenuList = styled.ul`
 const MenuListItem = styled.li`
 	font-family: Graphik;
 	font-style: normal;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 22px;
 	line-height: 24px;
 	letter-spacing: -0.005em;
@@ -50,6 +50,7 @@ const MenuListItem = styled.li`
 const ItemLink = styled(Link)`
 	text-decoration: none;
 	color: #090913;
+	font-weight: bold;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -61,7 +62,7 @@ const MenuListItemIcon = styled.img`
 `
 
 const MenuFoot = styled.p`
-	width: 182px;
+	width: 196px;
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
@@ -84,27 +85,21 @@ const Menu: React.FC = () => (
 	<Container>
 		<MenuList>
 			<MenuListItem>
-				<ItemLink to='/write-story'>
-					upload your story <MenuListItemIcon src='/assets/icons/document-upload.svg' />
-				</ItemLink>
+				<ItemLink to='/write-story'>upload your story</ItemLink>
 			</MenuListItem>
 
 			<MenuListItem>
-				<ItemLink to='/explore'>
-					explore stories <MenuListItemIcon src='/assets/icons/discover.svg' />
-				</ItemLink>
+				<ItemLink to='/explore'>explore stories</ItemLink>
 			</MenuListItem>
 
 			<MenuListItem>
-				<ItemLink to='/edit-story'>
-					edit your story <MenuListItemIcon src='/assets/icons/edit.svg' />
-				</ItemLink>
+				<ItemLink to='/edit-story'>edit your story</ItemLink>
 			</MenuListItem>
 
-			<MenuListItem>give feedback</MenuListItem>
+			<MenuListItem>leave a feedback</MenuListItem>
 		</MenuList>
 		<MenuFoot>
-			Share faith-based content for all to read <RedHeartImg src='/assets/images/red-heart.png' />
+			Share beautiful experiences for all to read <RedHeartImg src='/assets/images/red-heart.png' />
 		</MenuFoot>
 	</Container>
 )
