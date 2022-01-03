@@ -4,6 +4,7 @@ import styled from "styled-components";
 import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
 import Footer from "../components/organisms/footer";
+import { TokenContext } from "../contexts/edit-token-context";
 import { StoryContext } from "../contexts/write-story-context";
 
 // FDFAF2
@@ -114,9 +115,8 @@ const Preview: React.FC = () => {
   const { title, name, date, content, image } = story;
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, [story]);
+  const { token } = useContext(TokenContext);
+
   return (
     <div>
       <Navigation />
@@ -169,7 +169,11 @@ const Preview: React.FC = () => {
           <Back
             onClick={(e) => {
               e.preventDefault();
-              history.push("/write-story");
+              if (token) {
+                history.push(`/edit/${token}`);
+              } else {
+                history.push("/write");
+              }
               window.scrollTo(0, 0);
             }}
           >
