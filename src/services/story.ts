@@ -11,8 +11,12 @@ export const getOneStory = (storyId: string) => {
 export const getStoryFromToken = (token: string) => {
 	return request.get(`/tokens/${token}/story`)
 }
-export const sendEditStoryLink = (email: string) => {
+export const getStoriesFromEmail = (email: string) => {
 	return request.post(`/user/email/stories`, { email })
+}
+
+export const sendEditStoryLink = (emailId: string) => {
+	return request.post(`/user/${emailId}/stories/edit`)
 }
 
 export const likeStory = (storyId: string, userToken: string) => {
