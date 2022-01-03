@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { EditorState, ContentState } from "draft-js";
 import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Editor } from "react-draft-wysiwyg";
-import { convertToHTML } from "draft-convert";
+import { convertToHTML, convertFromHTML } from "draft-convert";
 import { useEffect, useState } from "react";
 
 const Form = styled.form`
@@ -71,15 +71,16 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({
   onSubmit,
   title,
   setTitle,
-  content, setContent
+  content,
+  setContent,
 }) => {
   const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(ContentState.createFromText(""))
+    EditorState.createWithContent(convertFromHTML(content))
   );
   useEffect(() => {
     let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+
     setContent(currentContentAsHTML);
-    
   }, [editorState]);
   return (
     <Form>
@@ -101,6 +102,7 @@ const StoryDetails: React.FC<StoryDetailsProps> = ({
           placeholder="Type your story here"
           editorStyle={{ marginBottom: "12px" }}
           editorState={editorState}
+          handlePastedText={() => false}
           onEditorStateChange={(editorState: EditorState) => {
             // console.log(editorState)
             setEditorState(editorState);
