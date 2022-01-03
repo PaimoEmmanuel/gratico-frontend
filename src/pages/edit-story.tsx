@@ -5,11 +5,11 @@ import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
 import CoverPhoto from "../components/organisms/cover-photo";
 import Footer from "../components/organisms/footer";
-import StoryDetails from "../components/organisms/story-details";
 import WriterDetailsEdit from "../components/organisms/writer-details-edit";
 import { TokenContext } from "../contexts/edit-token-context";
 import { StoryContext } from "../contexts/write-story-context";
 import { getStoryFromToken } from "../services/story";
+import { sendEditStoryLink } from "../services/story";
 
 const Content = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary};

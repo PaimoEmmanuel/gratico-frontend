@@ -88,10 +88,6 @@ const ExploreStories: React.FC<ExploreStoriesProps> = ({ filterBy }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [noOfPages, setNoOfPages] = useState(1);
 
-  const filterResponse = (data: any) => {
-    // should take an array of objects
-    // map this array into a new array of new objects
-  };
   const getStories = async () => {
     getAllStories(currentPage, filterBy)
       .then((res) => {
