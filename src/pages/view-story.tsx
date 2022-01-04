@@ -5,18 +5,13 @@ import BaseNote from '../components/molecules/base-note'
 import Footer from '../components/organisms/footer'
 import Navigation from '../components/molecules/nav'
 import { StoryContext } from '../contexts/write-story-context'
-import { getOneStory, likeStory } from '../services/story'
+import { getOneStory, likeStory, postViewCount } from '../services/story'
 import { singleDataFilter } from '../utils/dataFilter'
 import ViewStoryLoader from '../components/organisms/view-story-loader'
 
-const LoadingView = styled.div`
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: #999;
-	font-size: 72px;
-	color: #222;
+const Container = styled.div`
+	width: 100vw;
+	min-height: 100vh;
 `
 // FDFAF2
 const Content = styled.div`
@@ -182,6 +177,11 @@ const ViewStory: React.FC<IStory> = () => {
 
 				setLoading(false)
 
+				postViewCount(storyID).then((res) => {
+					console.log(res)
+				})
+				// .catch((err) => console.log('error', err))
+
 				let incomingLikes = cleanData.likes
 				setLikes(incomingLikes ? incomingLikes : 0)
 			})
@@ -211,7 +211,7 @@ const ViewStory: React.FC<IStory> = () => {
 	}
 
 	return (
-		<>
+		<Container>
 			{(loading || animationComplete === false) && <ViewStoryLoader />}
 			{loading === false && animationComplete && (
 				<>
@@ -306,10 +306,10 @@ const ViewStory: React.FC<IStory> = () => {
 						</Explore>
 						{/* <BaseNote /> */}
 					</Content>
-					<Footer />{' '}
+					<Footer />
 				</>
 			)}
-		</>
+		</Container>
 	)
 }
 
