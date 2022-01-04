@@ -16,11 +16,13 @@ const HeadingWrap = styled.div`
 	padding: 0 32px;
 `
 const Title = styled.h3`
+	width: 273px;
 	font-size: 24px;
 	line-height: 30px;
 	padding-top: 32px;
 `
 const Text = styled.p`
+	width: 252px;
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: -0.2px;
@@ -60,8 +62,8 @@ const WriteStory: React.FC = () => {
 			/>
 			<Content>
 				<HeadingWrap>
-					<Title>Remember, your gratitude story could encourage someone out there.</Title>
-					<Text>No long sign up forms! Ready to spread gratitude in the air? Let’s do it!</Text>
+					<Title>We are happy you are doing this, way to go! </Title>
+					<Text>No sign up forms required! Gratico is super easy to use!</Text>
 					<ProgressBar>
 						<ProgressSpan active={activeView >= 0} />
 						<ProgressSpan active={activeView >= 1} />
