@@ -51,7 +51,7 @@ const Span = styled.span`
 	width: 4px;
 	background-color: ${({ theme }) => theme.colors.black};
 	display: inline-block;
-	margin: 0 4px;
+	margin: 0 6px;
 	border-radius: 50%;
 `
 const Date = styled.p`
@@ -90,7 +90,7 @@ const Like = styled.button`
 `
 
 const Inspired = styled.div`
-	font-family: Butler;
+	font-family: 'Butler';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 34px;
@@ -107,6 +107,7 @@ const Explore = styled(Link)`
 	color: #000000;
 	padding: 10px;
 	border: 1px solid #000000;
+	border-radius: 6px;
 	margin: 0 auto 64px auto;
 	display: flex;
 	justify-content: center;
@@ -164,6 +165,7 @@ let testStory: IStory = {
 const ViewStory: React.FC<IStory> = () => {
 	const [story, setStory] = useState(testStory)
 	const [loading, setLoading] = useState(true)
+	const [animationComplete, setAnimationComplete] = useState(false)
 	const [likes, setLikes] = useState(0)
 	const [myLikes, setMyLikes] = useState(0)
 	const history = useHistory()
@@ -186,6 +188,12 @@ const ViewStory: React.FC<IStory> = () => {
 			.catch((err) => {
 				console.log('error', err)
 			})
+
+		setTimeout(() => {
+			setAnimationComplete(true)
+		}, 5000)
+
+		clearTimeout()
 	}, [])
 
 	const updateLike = () => {
@@ -204,8 +212,8 @@ const ViewStory: React.FC<IStory> = () => {
 
 	return (
 		<>
-			{loading && <ViewStoryLoader />}
-			{loading === false && (
+			{(loading || animationComplete === false) && <ViewStoryLoader />}
+			{loading === false && animationComplete && (
 				<>
 					<Navigation
 						logoSrc='/assets/images/mobile-footer-logo.png'

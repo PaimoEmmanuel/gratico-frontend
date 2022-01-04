@@ -16,6 +16,7 @@ const Container = styled.div<MenuDisplayStyles>`
 	margin: 10px auto;
 	top: 85%;
 	left: 50%;
+	box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.1);
 	transform: ${(props) => (props.showMenu ? 'translateX(-50%)' : 'translateX(100%)')};
 	z-index: 100;
 	transition: all 0.2s ease-out; //fix
