@@ -8,6 +8,7 @@ import {
 interface IUserContext {
   story: storyStateProps;
   setStory: (story: storyStateProps) => void;
+  emptyStory: () => void;
 }
 const initialState = {
   email: "",
@@ -22,14 +23,17 @@ const initialState = {
 export const StoryContext = createContext<IUserContext>({
   story: initialState,
   setStory: (story: storyStateProps) => {},
+  emptyStory: () => {},
 });
 
 const AuthContextProvider: React.FC = ({ children }) => {
   const [story, dispatch] = useReducer(StoryReducer, initialState);
   const setStory = (story: storyStateProps) =>
     dispatch({ type: "UPDATE_STORY", story });
+  const emptyStory = () =>
+    dispatch({ type: "EMPTY_STORY", story });
   return (
-    <StoryContext.Provider value={{ story, setStory }}>
+    <StoryContext.Provider value={{ story, setStory, emptyStory }}>
       {children}
     </StoryContext.Provider>
   );

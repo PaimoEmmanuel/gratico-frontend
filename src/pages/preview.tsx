@@ -13,110 +13,110 @@ import { postStory } from "../services/story";
 
 // FDFAF2
 const Content = styled.div`
-	//   background-color: ${({ theme }) => theme.colors.secondary};
-	padding-bottom: 38px;
-`
+  //   background-color: ${({ theme }) => theme.colors.secondary};
+  padding-bottom: 38px;
+`;
 const HeadingWrap = styled.div`
-	padding: 0 32px;
-	border-bottom: 1px solid #e6e6e6;
-`
+  padding: 0 32px;
+  border-bottom: 1px solid #e6e6e6;
+`;
 const Title = styled.h3`
-	font-size: 24px;
-	line-height: 30px;
-	padding-top: 32px;
-`
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 32px;
+`;
 const Text = styled.p`
-	font-size: 14px;
-	line-height: 20px;
-	letter-spacing: -0.2px;
-	margin: 16px 0;
-`
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  margin: 16px 0;
+`;
 const Story = styled.div`
-	padding: 90px 16px 135px 16px;
-	fint-size: 28px;
-	line-height: 30px;
-`
+  padding: 90px 16px 135px 16px;
+  fint-size: 28px;
+  line-height: 30px;
+`;
 const StoryTitle = styled.h1`
-	fint-size: 28px;
-	line-height: 30px;
-	padding: 0 14px;
-`
+  fint-size: 28px;
+  line-height: 30px;
+  padding: 0 14px;
+`;
 const Details = styled.div`
-	display: flex;
-	//   justify-content: center;
-	align-items: center;
-	margin-top: 14px;
-	padding: 0 14px;
-`
+  display: flex;
+  //   justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  padding: 0 14px;
+`;
 const Author = styled.p`
-	color: #96670d;
-	margin-right: 16px;
-`
+  color: #96670d;
+  margin-right: 16px;
+`;
 const Span = styled.span`
-	height: 4px;
-	width: 4px;
-	background-color: ${({ theme }) => theme.colors.black};
-	display: inline-block;
-	margin: 0 4px;
-	border-radius: 50%;
-`
+  height: 4px;
+  width: 4px;
+  background-color: ${({ theme }) => theme.colors.black};
+  display: inline-block;
+  margin: 0 4px;
+  border-radius: 50%;
+`;
 const Date = styled.p`
-	font-size: 14px;
-	line-height: 15.4px;
-`
+  font-size: 14px;
+  line-height: 15.4px;
+`;
 const Img = styled.img`
-	width: 100%;
-	margin: 48px 0 24px 0;
-	padding: 0 14px;
-`
+  width: 100%;
+  margin: 48px 0 24px 0;
+  padding: 0 14px;
+`;
 const Body = styled.p`
-	font-size: 14px;
-	line-height: 22px;
-`
+  font-size: 14px;
+  line-height: 22px;
+`;
 const Button = styled.button`
-	height: 50px;
-	width: 100%;
-	background-color: ${({ theme }) => theme.colors.blue};
-	margin-top: 50px;
-	border-radius: 8px;
-	color: ${({ theme }) => theme.colors.white};
-	border: none;
-	padding: 0 16px;
-`
+  height: 50px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.blue};
+  margin-top: 50px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+  padding: 0 16px;
+`;
 const Back = styled.button`
-	border: none;
-	background: none;
-	text-decoration: underline;
-	font-size: 15px;
-	color: ${({ theme }) => theme.colors.blue};
-	text-align: center;
-	display: block;
-	margin: 0 auto;
-	margin-top: 24px;
-`
+  border: none;
+  background: none;
+  text-decoration: underline;
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.blue};
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 24px;
+`;
 const Stat = styled.div`
-	color: #a6a6a6;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 24px;
-	& p {
-		display: flex;
-		align-items: center;
-		font-size: 14px;
-		line-height: 15.4px;
-	}
-`
+  color: #a6a6a6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  & p {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 15.4px;
+  }
+`;
 const Like = styled.button`
-	background: none;
-	border: none;
-	svg {
-		margin-right: 10px;
-	}
-`
+  background: none;
+  border: none;
+  svg {
+    margin-right: 10px;
+  }
+`;
 
 const Preview: React.FC = () => {
-  const { story } = useContext(StoryContext);
+  const { story, emptyStory } = useContext(StoryContext);
   const { title, name, date, content, image, email } = story;
   const { imageFile, setImageFile } = useContext(ImageFileContext);
   const [loading, setLoading] = useState(true);
@@ -130,10 +130,10 @@ const Preview: React.FC = () => {
   return (
     <div>
       <Navigation
-				logoSrc='/assets/images/mobile-footer-logo.png'
-				bgColor='#FEF4DE'
-				navColor='#333333'
-			/>
+        logoSrc="/assets/images/mobile-footer-logo.png"
+        bgColor="#FEF4DE"
+        navColor="#333333"
+      />
       <Content>
         <HeadingWrap>
           <Title>Preview story</Title>
@@ -187,6 +187,7 @@ const Preview: React.FC = () => {
                   if (res.data.uuid) {
                     history.push(`/share/${res.data.uuid}`);
                     window.scrollTo(0, 0);
+                    emptyStory();
                   } else {
                     toast(`Error: ${res.data}`);
                   }
@@ -224,4 +225,4 @@ const Preview: React.FC = () => {
   );
 };
 
-export default Preview
+export default Preview;
