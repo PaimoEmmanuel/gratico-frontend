@@ -5,7 +5,9 @@ import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
 import Footer from "../components/organisms/footer";
 import { TokenContext } from "../contexts/edit-token-context";
+import { ImageFileContext } from "../contexts/image-file-context";
 import { StoryContext } from "../contexts/write-story-context";
+import { postStory } from "../services/story";
 
 // FDFAF2
 const Content = styled.div`
@@ -112,11 +114,16 @@ const Like = styled.button`
 
 const Preview: React.FC = () => {
   const { story } = useContext(StoryContext);
-  const { title, name, date, content, image } = story;
+  const { title, name, date, content, image, email } = story;
+  const { imageFile, setImageFile } = useContext(ImageFileContext);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
   const { token } = useContext(TokenContext);
-
+  var bodyFormData = new FormData();
+  // bodyFormData.append('image', imageFile);
+  useEffect(() => {
+    console.log("imageFile", imageFile);
+  });
   return (
     <div>
       <Navigation />
@@ -162,6 +169,18 @@ const Preview: React.FC = () => {
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo(0, 0);
+              console.log("clicked");
+
+              postStory({
+                name,
+                email,
+                title,
+                body: content,
+                image: imageFile,
+              }).then((res) => {
+                console.log(res.data);
+                history.push(`/share/${res.data.uuid}`);
+              });
             }}
           >
             Upload story
