@@ -69,15 +69,15 @@ interface StoryDataProps {
 }
 
 const storylist: StoryDataProps[] = [
-	{
-		id: 0,
-		author: '',
-		title: '',
-		cover_img: '',
-		date: '',
-		readTime: 6,
-		likes: 15,
-	},
+	// {
+	// 	id: 0,
+	// 	author: '',
+	// 	title: '',
+	// 	cover_img: '',
+	// 	date: '',
+	// 	readTime: 6,
+	// 	likes: 15,
+	// },
 ]
 interface ExploreStoriesProps {
 	filterBy?: 'popular' | 'newest' | 'oldest'
@@ -94,12 +94,15 @@ const ExploreStories: React.FC<ExploreStoriesProps> = ({ filterBy }) => {
 			.then((res) => {
 				const cleanData = dataFilter(res.data.data)
 				setNoOfPages(res.data.last_page)
-				if (storylist[0].id == 0) {
+
+				// if (storylist[0].id == 0) {
+				if (stories.length === 0) {
 					setStories(cleanData)
 					setInitialLoading(false)
 				} else {
-					setStories({ ...stories, ...cleanData })
+					setStories(stories.concat(cleanData))
 					setLoadingMore(false)
+					console.log(stories)
 				}
 			})
 			.catch((error) => {
@@ -109,11 +112,7 @@ const ExploreStories: React.FC<ExploreStoriesProps> = ({ filterBy }) => {
 
 	useEffect(() => {
 		getStories()
-	}, [currentPage])
-	useEffect(() => {
-		getStories()
-		setCurrentPage(1)
-	}, [filterBy])
+	}, [currentPage, filterBy])
 
 	return (
 		<Stories>

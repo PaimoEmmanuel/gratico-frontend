@@ -8,7 +8,7 @@ const Container = styled.div<NavStyleProps>`
 	padding: 0;
 	// background-color: ${({ theme }) => theme.colors.black};
 	background-color: ${(props) => (props.bgColor ? props.bgColor : 'transparent')};
-	width: 100vw;
+	// width: 100vw;
 
 	@media (min-width: 600px) {
 		display: none;
@@ -23,7 +23,7 @@ const Logo = styled.a`
 `
 
 const NavWrapper = styled.div`
-	width: 100%;
+	// width: 100%;
 	position: relative;
 `
 
@@ -135,7 +135,11 @@ const Navigation: React.FC<NavProps> = ({ logoSrc, bgColor, navColor }) => {
 						</MenuIcon>
 					</Nav>
 
-					{state.isNavOpen ? <Menu isOpen={state.isNavOpen} /> : <Menu isOpen={state.isNavOpen} />}
+					{state.isNavOpen ? (
+						<Menu isOpen={state.isNavOpen} scrolled={scrolled} />
+					) : (
+						<Menu isOpen={state.isNavOpen} />
+					)}
 				</NavWrapper>
 			) : (
 				<NavWrapper>
@@ -150,7 +154,11 @@ const Navigation: React.FC<NavProps> = ({ logoSrc, bgColor, navColor }) => {
 						</MenuIcon>
 					</Nav>
 
-					{state.isNavOpen ? <Menu isOpen={state.isNavOpen} /> : <Menu isOpen={state.isNavOpen} />}
+					{state.isNavOpen ? (
+						<Menu isOpen={state.isNavOpen} scrolled={scrolled} />
+					) : (
+						<Menu isOpen={state.isNavOpen} />
+					)}
 				</NavWrapper>
 			)}
 		</Container>

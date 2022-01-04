@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const Container = styled.div<MenuDisplayStyles>`
 	width: 90%;
-	// height: 352px;
-	display: flex;
+	height: auto;
+	display: ${(props) => (props.showMenu ? 'flex' : 'block')};
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
@@ -12,12 +12,13 @@ const Container = styled.div<MenuDisplayStyles>`
 	border-radius: 0 0 8px 8px;
 	background-color: ${({ theme }) => theme.colors.primary};
 	// background: red;
-	position: absolute;
+	position: fixed;
 	margin: 10px auto;
-	top: 85%;
+	// top: 10%;
+	top: ${(props) => (props.menuScrolled ? '9%' : '10%')};
 	left: 50%;
 	box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.1);
-	transform: ${(props) => (props.showMenu ? 'translateX(-50%)' : 'translateX(100%)')};
+	transform: ${(props) => (props.showMenu ? 'translateX(-50%)' : 'translateX(120%)')};
 	z-index: 100;
 	transition: transform 0.2s ease-out; //fix
 `
@@ -86,14 +87,16 @@ const RedHeartImg = styled.img`
 
 interface MenuDisplayProps {
 	isOpen: boolean
+	scrolled?: boolean
 }
 
 interface MenuDisplayStyles {
 	showMenu: boolean
+	menuScrolled?: boolean
 }
 
-const Menu: React.FC<MenuDisplayProps> = ({ isOpen }) => (
-	<Container showMenu={isOpen}>
+const Menu: React.FC<MenuDisplayProps> = ({ isOpen, scrolled }) => (
+	<Container showMenu={isOpen} menuScrolled={scrolled}>
 		<MenuList>
 			<MenuListItem>
 				<ItemLink to='/write'>upload your story</ItemLink>

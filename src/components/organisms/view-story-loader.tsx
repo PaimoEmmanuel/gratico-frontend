@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 
 const Container = styled.div`
 	padding: 20px;
-	background-color: ${({ theme }) => theme.colors.black};
+	background-color: #202020;
 	width: 100vw;
 	height: 100vh;
 	color: red;

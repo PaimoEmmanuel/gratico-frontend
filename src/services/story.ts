@@ -23,16 +23,25 @@ export const likeStory = (storyId: string) => {
 	return request.post(`/story/${storyId}/likes`)
 }
 
-export const postStory = (story: { name: string; email: string; title: string; body: string, image?: any }) => {
-	let formData = new FormData();
-	formData.append("name", story.name);
-	formData.append("email", story.email);
-	formData.append("body", story.body);
-	formData.append("title", story.title);
-	if (story.image) {
-		formData.append("image", story.image);
-		return request.post(`/stories`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
-	}
-	return request.post(`/stories`, formData, { headers: { 'Content-Type': 'application/json' } });
+export const postViewCount = (storyId: string) => {
+	return request.post(`/story/${storyId}/views`)
+}
 
+export const postStory = (story: {
+	name: string
+	email: string
+	title: string
+	body: string
+	image?: any
+}) => {
+	let formData = new FormData()
+	formData.append('name', story.name)
+	formData.append('email', story.email)
+	formData.append('body', story.body)
+	formData.append('title', story.title)
+	if (story.image) {
+		formData.append('image', story.image)
+		return request.post(`/stories`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+	}
+	return request.post(`/stories`, formData, { headers: { 'Content-Type': 'application/json' } })
 }
