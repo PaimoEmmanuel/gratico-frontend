@@ -6,6 +6,8 @@ import Navigation from '../components/molecules/nav'
 import Footer from '../components/organisms/footer'
 import { TokenContext } from '../contexts/edit-token-context'
 import { StoryContext } from '../contexts/write-story-context'
+import { StoryContext } from "../contexts/write-story-context";
+import { postStory } from "../services/story";
 
 // FDFAF2
 const Content = styled.div`
@@ -110,85 +112,102 @@ const Like = styled.button`
 	}
 `
 
-const Preview: React.FC = () => {
-	const { story } = useContext(StoryContext)
-	const { title, name, date, content, image } = story
-	const [loading, setLoading] = useState(true)
-	const history = useHistory()
-	const { token } = useContext(TokenContext)
-
-	return (
-		<div>
-			<Navigation
+const Preview: React.FC = () => {	
+  const { story } = useContext(StoryContext);
+  const { title, name, date, content, image, email } = story;
+  const { imageFile, setImageFile } = useContext(ImageFileContext);
+  const [loading, setLoading] = useState(true);
+  const history = useHistory();
+  const { token } = useContext(TokenContext);
+  var bodyFormData = new FormData();
+  // bodyFormData.append('image', imageFile);
+  useEffect(() => {
+    console.log("imageFile", imageFile);
+  });
+  return (
+    <div>
+      <Navigation
 				logoSrc='/assets/images/mobile-footer-logo.png'
 				bgColor='#FEF4DE'
 				navColor='#333333'
 			/>
-			<Content>
-				<HeadingWrap>
-					<Title>Preview story</Title>
-					<Text>Any final edits? You can read through before uploading.</Text>
-				</HeadingWrap>
-				<Story>
-					<StoryTitle>{title}</StoryTitle>
-					<Details>
-						<Author>{name}</Author>
-						<Date>{date}</Date>
-						<Span></Span>
-						<Date>6 min read</Date>
-					</Details>
-					<Img src={image} />
-					<Body dangerouslySetInnerHTML={{ __html: content }}></Body>
-					<Stat>
-						<p>
-							<Like>
-								<svg
-									width='20'
-									height='18'
-									viewBox='0 0 20 18'
-									fill='none'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<path
-										d='M10.517 16.3417C10.2337 16.4417 9.76699 16.4417 9.48366 16.3417C7.06699 15.5167 1.66699 12.075 1.66699 6.24171C1.66699 3.66671 3.74199 1.58337 6.30032 1.58337C7.81699 1.58337 9.15866 2.31671 10.0003 3.45004C10.842 2.31671 12.192 1.58337 13.7003 1.58337C16.2587 1.58337 18.3337 3.66671 18.3337 6.24171C18.3337 12.075 12.9337 15.5167 10.517 16.3417Z'
-										stroke='#292D32'
-										stroke-width='1.5'
-										stroke-linecap='round'
-										stroke-linejoin='round'
-									/>
-								</svg>
-							</Like>
-							0 likes
-						</p>
-						<p>0 views</p>
-					</Stat>
-					<Button
-						onClick={(e) => {
-							e.preventDefault()
-							window.scrollTo(0, 0)
-						}}
-					>
-						Upload story
-					</Button>
-					<Back
-						onClick={(e) => {
-							e.preventDefault()
-							if (token) {
-								history.push(`/edit/${token}`)
-							} else {
-								history.push('/write')
-							}
-							window.scrollTo(0, 0)
-						}}
-					>
-						Back to editing
-					</Back>
-				</Story>
-				<BaseNote />
-			</Content>
-			<Footer />
-		</div>
-	)
-}
+      <Content>
+        <HeadingWrap>
+          <Title>Preview story</Title>
+          <Text>Any final edits? You can read through before uploading.</Text>
+        </HeadingWrap>
+        <Story>
+          <StoryTitle>{title}</StoryTitle>
+          <Details>
+            <Author>{name}</Author>
+            <Date>{date}</Date>
+            <Span></Span>
+            <Date>6 min read</Date>
+          </Details>
+          <Img src={image} />
+          <Body dangerouslySetInnerHTML={{ __html: content }}></Body>
+          <Stat>
+            <p>
+              <Like>
+                <svg
+                  width="20"
+                  height="18"
+                  viewBox="0 0 20 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.517 16.3417C10.2337 16.4417 9.76699 16.4417 9.48366 16.3417C7.06699 15.5167 1.66699 12.075 1.66699 6.24171C1.66699 3.66671 3.74199 1.58337 6.30032 1.58337C7.81699 1.58337 9.15866 2.31671 10.0003 3.45004C10.842 2.31671 12.192 1.58337 13.7003 1.58337C16.2587 1.58337 18.3337 3.66671 18.3337 6.24171C18.3337 12.075 12.9337 15.5167 10.517 16.3417Z"
+                    stroke="#292D32"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </Like>
+              0 likes
+            </p>
+            <p>0 views</p>
+          </Stat>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo(0, 0);
+              console.log("clicked");
+
+              postStory({
+                name,
+                email,
+                title,
+                body: content,
+                image: imageFile,
+              }).then((res) => {
+                console.log(res.data);
+                history.push(`/share/${res.data.uuid}`);
+              });
+            }}
+          >
+            Upload story
+          </Button>
+          <Back
+            onClick={(e) => {
+              e.preventDefault();
+              if (token) {
+                history.push(`/edit/${token}`);
+              } else {
+                history.push("/write");
+              }
+              window.scrollTo(0, 0);
+            }}
+          >
+            Back to editing
+          </Back>
+        </Story>
+        <BaseNote />
+      </Content>
+      <Footer />
+    </div>
+  );
+};
 
 export default Preview
