@@ -18,3 +18,11 @@ body {
 ::selection {
 	background-color: #242549;
 }
+.medium-editor-element {
+	border: 1x solid #242549 !important;
+	min-height: 400px !important;
+	background-color: white;
+	margin: 16px 0;
+	padding: 10px;
+	font-family: Graphik;
+}
