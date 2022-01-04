@@ -3,9 +3,10 @@ import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import Menu from '../molecules/menu'
+import Navigation from '../molecules/nav'
 
 const Container = styled.div`
-	padding: 32px 20px 20px;
+	// padding: 32px 20px 20px;
 	background-color: transparent;
 	border-bottom: 1px solid #4b4b4b;
 
@@ -53,8 +54,7 @@ const MenuIcon = styled.div<StyleProps>`
 const Header = styled.header`
 	position: relative;
 	width: 315px;
-	margin: 0 auto;
-	margin-top: 46px;
+	margin: 40px auto 20px;
 `
 
 const Heading = styled.h1`
@@ -80,7 +80,7 @@ const SubHeading = styled.p`
 	letter-spacing: -0.2px;
 	color: ${({ theme }) => theme.colors.white};
 	margin-top: 7px;
-	width: 250px;
+	width: 280px;
 `
 
 const emojiAnimation = keyframes`
@@ -118,18 +118,11 @@ const ExploreHeading: React.FC = () => {
 
 	return (
 		<Container>
-			<Nav>
-				<Logo to='/'>
-					<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
-				</Logo>
-				<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen}>
-					<span></span>
-					<span></span>
-					<span></span>
-				</MenuIcon>
-			</Nav>
-
-			{state.isNavOpen ? <Menu /> : <div></div>}
+			<Navigation
+				logoSrc='/assets/images/gratico-logo-mobile.png'
+				bgColor='transparent'
+				navColor='#ffffff'
+			/>
 
 			<Header>
 				<Heading>

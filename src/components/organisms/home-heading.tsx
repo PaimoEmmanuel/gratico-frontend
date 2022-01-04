@@ -1,58 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 // import Confetti from '../atoms/confetti'
 import Confetti from 'react-confetti'
 import { Link } from 'react-router-dom'
 
-import Menu from '../molecules/menu'
+import Navigation from '../molecules/nav'
 
 const Container = styled.div`
-	padding: 32px 20px;
+	padding: 0;
 	background-color: ${({ theme }) => theme.colors.black};
 
 	@media (min-width: 600px) {
 		display: none;
 	}
+	width: 100vw;
 `
 
-const Logo = styled(Link)`
-	text-decoration: none;
-	margin: 0;
-	padding: 0;
-	height: 44px;
-`
-
-const Nav = styled.nav`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`
-const MenuIcon = styled.div<StyleProps>`
-	& span {
-		height: 3px;
-		width: 23.25px;
-		display: block;
-		border-radius: 10px;
-		background-color: ${({ theme }) => theme.colors.white};
-		&:not(:last-child) {
-			margin-bottom: 4.5px;
-		}
-
-		&:nth-child(1) {
-			transform: ${(props) =>
-				props.clicked ? 'translateY(7px) rotate(45deg)' : 'translateY(0px) rotate(0deg)'};
-		}
-		&:nth-child(2) {
-			display: ${(props) => (props.clicked ? 'none' : 'block')};
-		}
-		&:nth-child(3) {
-			transform: ${(props) =>
-				props.clicked ? 'translateY(0px) rotate(-45deg)' : 'translateY(0px) rotate(0deg)'};
-		}
-	}
-`
 const Content = styled.div`
 	margin-top: 44px;
+	padding: 32px 20px;
 	position: relative;
 `
 const Img = styled.img`
@@ -95,16 +61,33 @@ const Write = styled(Link)`
 	z-index: 5;
 	position: relative;
 `
+const emojiAnimation = keyframes`
+  0%
+  {
+    transform: translateY(-5px);
+  }
+  50%
+  {
+    transform: translateY(0);
+  }
+  100%
+  {
+    transform: translateY(-5px);
+  }
+`
+
 const Grin = styled.img`
 	margin: 0 4px;
-	width: 12px;
-	height: 12px;
+	width: 20px;
+	height: 20px;
+	animation: ${emojiAnimation} 2s infinite;
 `
 const Explore = styled(Link)`
 	font-size: 15px;
 	color: white;
 	padding: 10px;
 	border: 1px solid #ffffff;
+	border-radius: 6px;
 	margin: auto;
 	display: flex;
 	justify-content: center;
@@ -119,12 +102,8 @@ const Explore = styled(Link)`
 const Absolute = styled.div`
 	position: absolute;
 `
-interface StyleProps {
-	clicked: boolean
-}
 
 const HomeHeading: React.FC = () => {
-	const [state, setState] = useState({ isNavOpen: false })
 	const [dimension, setDimension] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight,
@@ -136,25 +115,15 @@ const HomeHeading: React.FC = () => {
 		})
 	}, [])
 
-	const handleNavClick = () => {
-		setState((state) => ({ ...state, isNavOpen: !state.isNavOpen }))
-	}
-
 	return (
 		<Container>
 			<Confetti width={dimension.width} height={dimension.height} recycle={false} />
-			<Nav>
-				<Logo to='/'>
-					<img src='/assets/images/gratico-logo-mobile.png' alt='Gratico logo' />
-				</Logo>
-				<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen}>
-					<span></span>
-					<span></span>
-					<span></span>
-				</MenuIcon>
-			</Nav>
 
-			{state.isNavOpen ? <Menu /> : <div></div>}
+			<Navigation
+				logoSrc='/assets/images/gratico-logo-mobile.png'
+				bgColor='transparent'
+				navColor='#ffffff'
+			/>
 
 			<Content>
 				<Absolute>
@@ -182,7 +151,7 @@ const HomeHeading: React.FC = () => {
 				</Body>
 
 				<Write to='/write'>
-					What are you grateful for <Grin src='/assets/images/grin-with-big-eye.png' alt='grin' /> ?
+					Share your story <Grin src='/assets/images/grin-with-big-eye.png' alt='grin' />
 				</Write>
 
 				<Explore to='/explore'>
