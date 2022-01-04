@@ -33,7 +33,7 @@ const AppRouter = () => {
             exact={true}
           />
           <Route path="/preview" component={Preview} exact={true} />
-          <Route path="/share-story" component={ShareStory} exact={true} />
+          <Route path="/share/:storyId" component={ShareStory} exact={true} />
           <Redirect to="/not-found" />
         </Switch>
       </>

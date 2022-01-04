@@ -7,14 +7,17 @@ import { GlobalStyle } from "./style-util/global";
 import AppRouter from "./router/app-router";
 import AuthContextProvider from "./contexts/write-story-context";
 import TokenContextProvider from "./contexts/edit-token-context";
+import ImageFileContextProvider from "./contexts/image-file-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <AuthContextProvider>
         <TokenContextProvider>
-          <GlobalStyle />
-          <AppRouter />
+          <ImageFileContextProvider>
+            <GlobalStyle />
+            <AppRouter />
+          </ImageFileContextProvider>
         </TokenContextProvider>
       </AuthContextProvider>
     </ThemeProvider>
