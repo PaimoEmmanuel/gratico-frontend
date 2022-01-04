@@ -7,6 +7,7 @@ import Navigation from "../components/molecules/nav";
 import Footer from "../components/organisms/footer";
 import { TokenContext } from "../contexts/edit-token-context";
 import { StoryContext } from "../contexts/write-story-context";
+import { ToastContainer, toast } from "react-toastify";
 
 // FDFAF2
 const Content = styled.div`
@@ -148,7 +149,7 @@ const ShareStory: React.FC = () => {
                 // copyText.sele
                 copyText?.setSelectionRange(0, 99999);
                 document.execCommand("copy");
-                console.log("copied!");
+                toast(`Share link copied!`);
               }}
             >
               <svg
@@ -174,6 +175,11 @@ const ShareStory: React.FC = () => {
                 />
               </svg>
             </button>
+            <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              hideProgressBar={true}
+            />
           </LinkBox>
           <Share>
             <p>Share to</p>
@@ -197,7 +203,9 @@ const ShareStory: React.FC = () => {
                 />
               </svg>
             </a>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgratico.xyz/story/${storyId}`}>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgratico.xyz/story/${storyId}`}
+            >
               <svg
                 width="26"
                 height="26"
