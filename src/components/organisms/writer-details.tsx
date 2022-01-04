@@ -78,6 +78,8 @@ const WriterDetails: React.FC<WriterDetailsProps> = ({ email, setEmail, name, se
 		}
 	}
 
+	const handleEmailInput = () => {}
+
 	return (
 		<Form>
 			<Email>

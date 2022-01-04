@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled.div<MenuDisplayStyles>`
 	width: 90%;
 	// height: 352px;
 	display: flex;
@@ -11,12 +11,14 @@ const Container = styled.div`
 	padding: 20px 10px;
 	border-radius: 0 0 8px 8px;
 	background-color: ${({ theme }) => theme.colors.primary};
+	// background: red;
 	position: absolute;
 	margin: 10px auto;
+	top: 85%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: ${(props) => (props.showMenu ? 'translateX(-50%)' : 'translateX(100%)')};
 	z-index: 100;
-	transition: all 5s ease; //fix
+	transition: all 0.2s ease-out; //fix
 `
 
 const MenuList = styled.ul`
@@ -81,8 +83,16 @@ const RedHeartImg = styled.img`
 	object-fit: cover;
 `
 
-const Menu: React.FC = () => (
-	<Container>
+interface MenuDisplayProps {
+	isOpen: boolean
+}
+
+interface MenuDisplayStyles {
+	showMenu: boolean
+}
+
+const Menu: React.FC<MenuDisplayProps> = ({ isOpen }) => (
+	<Container showMenu={isOpen}>
 		<MenuList>
 			<MenuListItem>
 				<ItemLink to='/write'>upload your story</ItemLink>

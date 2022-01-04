@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import BaseNote from '../components/molecules/base-note'
-import Navigation from '../components/molecules/nav'
 import Footer from '../components/organisms/footer'
+import Navigation from '../components/molecules/nav'
 import { StoryContext } from '../contexts/write-story-context'
 import { getOneStory, likeStory } from '../services/story'
 import { singleDataFilter } from '../utils/dataFilter'
@@ -169,7 +169,7 @@ const ViewStory: React.FC<IStory> = () => {
 
 	const { storyID } = useParams<{ storyID: string }>()
 
-	let test = document.getElementById('like') as HTMLButtonElement
+	let likeIcon = document.getElementById('like') as HTMLButtonElement
 
 	useEffect(() => {
 		getOneStory(storyID)
@@ -203,7 +203,11 @@ const ViewStory: React.FC<IStory> = () => {
 
 	return (
 		<>
-			<Navigation />
+			<Navigation
+				logoSrc='/assets/images/mobile-footer-logo.png'
+				bgColor='#FEF4DE'
+				navColor='#333333'
+			/>
 			{loading && <LoadingView>...</LoadingView>}
 			{loading === false && (
 				<Content>
@@ -225,9 +229,9 @@ const ViewStory: React.FC<IStory> = () => {
 										e.preventDefault()
 										// console.log(e)
 										updateLike()
-										test.style.transform = 'scale(1.3)'
+										likeIcon.style.transform = 'scale(1.3)'
 										setTimeout(() => {
-											test.style.transform = 'scale(1)'
+											likeIcon.style.transform = 'scale(1)'
 										}, 200)
 									}}
 									id='like'
@@ -236,12 +240,12 @@ const ViewStory: React.FC<IStory> = () => {
 										width='20'
 										height='18'
 										viewBox='0 0 20 18'
-										fill={likes > 0 ? '#F12E43' : 'none'}
+										fill={myLikes > 0 ? '#F12E43' : 'none'}
 										xmlns='http://www.w3.org/2000/svg'
 									>
 										<path
 											d='M10.517 16.3417C10.2337 16.4417 9.76699 16.4417 9.48366 16.3417C7.06699 15.5167 1.66699 12.075 1.66699 6.24171C1.66699 3.66671 3.74199 1.58337 6.30032 1.58337C7.81699 1.58337 9.15866 2.31671 10.0003 3.45004C10.842 2.31671 12.192 1.58337 13.7003 1.58337C16.2587 1.58337 18.3337 3.66671 18.3337 6.24171C18.3337 12.075 12.9337 15.5167 10.517 16.3417Z'
-											stroke={likes > 0 ? '#F12E43' : '#292D32'}
+											stroke={myLikes > 0 ? '#F12E43' : '#292D32'}
 											stroke-width='1.5'
 											stroke-linecap='round'
 											stroke-linejoin='round'

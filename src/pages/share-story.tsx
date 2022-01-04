@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components'
 import Success from "../components/atoms/success";
 import BaseNote from "../components/molecules/base-note";
 import Navigation from "../components/molecules/nav";
@@ -10,28 +10,44 @@ import { StoryContext } from "../contexts/write-story-context";
 
 // FDFAF2
 const Content = styled.div`
-  padding: 115px 26px 38px 26px;
-`;
-const SuccessWrap = styled.div`
-  svg {
-    margin: 0 auto;
-    display: block;
+	padding: 115px 26px 38px 26px;
+`
+
+const successAnimation = keyframes`
+  0%
+  {
+    transform: translateY(-5px);
   }
-`;
+  50%
+  {
+    transform: translateY(0);
+  }
+  100%
+  {
+    transform: translateY(-5px);
+  }
+`
+const SuccessWrap = styled.div`
+	animation: ${successAnimation} 2s infinite;
+	svg {
+		margin: 0 auto;
+		display: block;
+	}
+`
 const Title = styled.h3`
-  font-size: 24px;
-  line-height: 30px;
-  padding-top: 32px;
-  text-align: center;
-  margin: 0 53px;
-`;
+	font-size: 24px;
+	line-height: 30px;
+	padding-top: 32px;
+	text-align: center;
+	margin: 0 53px;
+`
 const Text = styled.p`
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.2px;
-  margin: 16px 37px;
-  text-align: center;
-`;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: -0.2px;
+	margin: 16px 37px;
+	text-align: center;
+`
 const LinkBox = styled.div`
   background-color: #fefaf1;
   border: 1px solid #ededed;
@@ -105,7 +121,11 @@ const ShareStory: React.FC = () => {
 
   return (
     <div>
-      <Navigation />
+      <Navigation
+				logoSrc='/assets/images/mobile-footer-logo.png'
+				bgColor='#FEF4DE'
+				navColor='#333333'
+			/>
       <Content>
         <div>
           <SuccessWrap>
@@ -241,4 +261,4 @@ const ShareStory: React.FC = () => {
   );
 };
 
-export default ShareStory;
+export default ShareStory
