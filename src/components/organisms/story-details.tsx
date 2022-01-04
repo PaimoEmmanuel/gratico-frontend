@@ -2,9 +2,8 @@ import "medium-editor/dist/css/medium-editor.css";
 import "medium-editor/dist/css/themes/default.css";
 import styled from "styled-components";
 // import { EditorState, ContentState } from "draft-js";
-import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Editor from "react-medium-editor";
-import { convertToHTML, convertFromHTML } from "draft-convert";
 import { useEffect, useState } from "react";
 
 const Form = styled.form`

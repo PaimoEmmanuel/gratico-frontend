@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { EditorState, ContentState } from "draft-js";
-import "/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Editor } from "react-draft-wysiwyg";
-import { convertToHTML, convertFromHTML } from "draft-convert";
+import "medium-editor/dist/css/medium-editor.css";
+import "medium-editor/dist/css/themes/default.css";
+import Editor from "react-medium-editor";
 import { useState, useEffect } from "react";
 
 const Form = styled.form`
@@ -76,14 +75,7 @@ const WriterDetailsEdit: React.FC<WriterDetailsProps> = ({
   setContent,
   onSubmit,
 }) => {
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(convertFromHTML(content))
-  );
-  useEffect(() => {
-    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
 
-    setContent(currentContentAsHTML);
-  }, [editorState]);
   return (
     <Form>
       <Email>
@@ -107,7 +99,7 @@ const WriterDetailsEdit: React.FC<WriterDetailsProps> = ({
       </Name>
       <Name>
         <Label htmlFor="">This is where you type the whole gist</Label>
-        <Editor
+        {/* <Editor
           placeholder="Type your story here"
           editorStyle={{ marginBottom: "12px" }}
           editorState={editorState}
@@ -116,23 +108,15 @@ const WriterDetailsEdit: React.FC<WriterDetailsProps> = ({
             // console.log(editorState)
             setEditorState(editorState);
           }}
-          //   ref={this.editorRef}
-          //   readOnly={!editMode}
-          // toolbarHidden={true}
-          toolbar={
-            {
-              // inline: { inDropdown: true },
-              // list: { inDropdown: true },
-              // textAlign: { inDropdown: true },
-              // link: { inDropdown: true },
-              // history: { inDropdown: true },
-              // image: {
-              //   uploadCallback: uploadImageCallBack,
-              //   alt: { present: true, mandatory: true },
-              // },
-            }
-          }
-        />
+        /> */}
+        <div className="app">
+          <Editor
+            text={content}
+            onChange={(text: string) => {
+              setContent(text);
+            }}
+          />
+        </div>
         <InputNote>
           <InputNote>
             Don’t leave out the juices, we are here for all of it!
