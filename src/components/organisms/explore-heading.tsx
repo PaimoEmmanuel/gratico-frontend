@@ -15,42 +15,6 @@ const Container = styled.div`
 	}
 `
 
-const Logo = styled(Link)`
-	text-decoration: none;
-	margin: 0;
-	padding: 0;
-	height: 44px;
-`
-
-const Nav = styled.nav`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`
-const MenuIcon = styled.div<StyleProps>`
-	& span {
-		height: 3px;
-		width: 23.25px;
-		display: block;
-		border-radius: 10px;
-		background-color: ${({ theme }) => theme.colors.white};
-		&:not(:last-child) {
-			margin-bottom: 4.5px;
-		}
-
-		&:nth-child(1) {
-			transform: ${(props) =>
-				props.clicked ? 'translateY(7px) rotate(45deg)' : 'translateY(0px) rotate(0deg)'};
-		}
-		&:nth-child(2) {
-			display: ${(props) => (props.clicked ? 'none' : 'block')};
-		}
-		&:nth-child(3) {
-			transform: ${(props) =>
-				props.clicked ? 'translateY(0px) rotate(-45deg)' : 'translateY(0px) rotate(0deg)'};
-		}
-	}
-`
 const Header = styled.header`
 	position: relative;
 	width: 315px;

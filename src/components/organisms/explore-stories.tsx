@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { getAllStories } from '../../services/story'
-import axios from 'axios'
 
 import StoryCard from '../organisms/story-card'
 import { dataFilter } from '../../utils/dataFilter'

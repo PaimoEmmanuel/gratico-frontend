@@ -47,7 +47,7 @@ const Body = styled.p`
 const Write = styled(Link)`
 	font-size: 15px;
 	letter-spacing: -0.2px;
-	width: 248px;
+	width: 200px;
 	height: 50px;
 	background-color: ${({ theme }) => theme.colors.primary};
 	margin: auto;
