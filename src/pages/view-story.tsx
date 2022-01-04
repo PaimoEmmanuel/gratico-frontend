@@ -217,7 +217,7 @@ const ViewStory: React.FC<IStory> = () => {
 							<Author>{story.author}</Author>
 							<Date>{story.date}</Date>
 							<Span></Span>
-							<Date>6 min read</Date>
+							<Date>{story.readTime} min read</Date>
 						</Details>
 						<Img src={story.cover_img} />
 						<Body dangerouslySetInnerHTML={{ __html: story.content ? story.content : '' }}></Body>

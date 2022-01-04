@@ -93,6 +93,7 @@ const Back = styled.button`
 	margin-top: 24px;
 `
 const Stat = styled.div`
+	color: #a6a6a6;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -158,7 +159,7 @@ const Preview: React.FC = () => {
 								>
 									<path
 										d='M10.517 16.3417C10.2337 16.4417 9.76699 16.4417 9.48366 16.3417C7.06699 15.5167 1.66699 12.075 1.66699 6.24171C1.66699 3.66671 3.74199 1.58337 6.30032 1.58337C7.81699 1.58337 9.15866 2.31671 10.0003 3.45004C10.842 2.31671 12.192 1.58337 13.7003 1.58337C16.2587 1.58337 18.3337 3.66671 18.3337 6.24171C18.3337 12.075 12.9337 15.5167 10.517 16.3417Z'
-										stroke='#292D32'
+										stroke='#A6A6A6'
 										stroke-width='1.5'
 										stroke-linecap='round'
 										stroke-linejoin='round'
