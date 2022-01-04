@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const Form = styled.form`
@@ -61,8 +61,9 @@ interface ErrorNoteStyleProps {
 
 interface EditStoryRequestFormProps {
 	onSubmit: any
+	displayError: string
 }
-const EditStoryRequestForm: React.FC<EditStoryRequestFormProps> = ({ onSubmit }) => {
+const EditStoryRequestForm: React.FC<EditStoryRequestFormProps> = ({ onSubmit, displayError }) => {
 	const [state, setstate] = useState({
 		buttonEnabled: false,
 		emailValue: '',
@@ -72,6 +73,10 @@ const EditStoryRequestForm: React.FC<EditStoryRequestFormProps> = ({ onSubmit })
 		show: false,
 		errorNote: 'This email isn’t tied to an author',
 	})
+
+	useEffect(() => {
+		setErrorDisplay({ show: true, errorNote: displayError })
+	}, [displayError])
 
 	const handleChange = (value: any) => {
 		let inputValue = value.target.value
