@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Container = styled.div<MenuDisplayStyles>`
-	width: 90%;
+	width: 100%;
 	height: auto;
 	display: ${(props) => (props.showMenu ? 'flex' : 'block')};
 	flex-direction: column;
@@ -15,7 +15,7 @@ const Container = styled.div<MenuDisplayStyles>`
 	position: fixed;
 	margin: 10px auto;
 	// top: 10%;
-	top: ${(props) => (props.menuScrolled ? '9%' : '10%')};
+	top: ${(props) => (props.menuScrolled ? '60px' : '70px')};
 	left: 50%;
 	box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.1);
 	transform: ${(props) => (props.showMenu ? 'translateX(-50%)' : 'translateX(120%)')};
@@ -110,7 +110,7 @@ const Menu: React.FC<MenuDisplayProps> = ({ isOpen, scrolled }) => (
 				<ItemLink to='/edit'>edit your story</ItemLink>
 			</MenuListItem>
 
-			<MenuListItem>leave a feedback</MenuListItem>
+			<MenuListItem style={{ textDecoration: 'underline' }}>leave a feedback</MenuListItem>
 		</MenuList>
 		<MenuFoot>
 			Share beautiful experiences for all to read <RedHeartImg src='/assets/images/red-heart.png' />

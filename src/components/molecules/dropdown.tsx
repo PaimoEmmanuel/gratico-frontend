@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 const DropdownWrapper = styled.div<StyleProps>`
 	width: 315px;
 	margin: 34px auto 0;
-	margin-bottom: ${(props) => (props.optionSelected ? '0px' : '40px')};
+	margin-bottom: ${(props) => (props.optionSelected ? '0px' : '20px')};
 `
 
 const SelectBoxContainer = styled.div`
@@ -19,9 +19,8 @@ const SelectBoxContainer = styled.div`
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
-	line-height: 15px;
-	letter-spacing: -0.2px;
+	font-size: 16px;
+	line-height: 18px;
 	vertical-align: middle;
 	background: #121212;
 	position: relative;
@@ -30,7 +29,7 @@ const SelectBoxContainer = styled.div`
 const SelectBoxSelectedItem = styled.div`
 	height: 100%;
 	width: 100%;
-	padding: 14px 18px;
+	padding: 16px 18px;
 	vertical-align: middle;
 	display: flex;
 	flex-direction: row;
@@ -48,23 +47,22 @@ const SelectBoxArrow = styled.div<StyleProps>`
 `
 
 const SelectBoxItems = styled.div<StyleProps>`
-	border-bottom: 1px solid #ddd;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	border: 1px solid #ffffff;
-	padding: 10px 0;
+	// border: 1px solid #ffffff;
+	padding: 24px 0 0;
 	display: ${(props) => (props.clicked ? 'flex' : 'none')};
+	box-shadow: 4px 6px 30px 6px rgba(0, 0, 0, 0.3);
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
 	background: #121212;
-	z-index: 105;
+	z-index: 98;
 	position: absolute;
+	top: 44px;
 	width: 100%;
 `
 
 const Item = styled.div`
-	padding: 11px 20px;
+	padding: 0 34px 34px;
 	width: 100%;
 `
 
@@ -76,7 +74,7 @@ const SortOption = styled.div<StyleProps>`
 	line-height: 26px;
 	letter-spacing: -0.2px;
 	color: #ffffff;
-	margin-top: 48px;
+	margin-top: 34px;
 	display: ${(props) => (props.optionSelected ? 'flex' : 'none')};
 `
 

@@ -15,12 +15,13 @@ const Heading = styled.h3`
 	font-size: 34px;
 	line-height: 40px;
 	letter-spacing: -1px;
-	padding: 34px 40px 40px 40px;
 	text-align: center;
+	margin: 34px auto 40px;
+	width: 309px;
 `
 const Title = styled.p`
-	font-size: 16px;
-	line-height: 18px;
+	font-size: 18px;
+	line-height: 19.8px;
 	letter-spacing: -0.2px;
 	text-align: center;
 	font-weight: 900;
@@ -28,12 +29,12 @@ const Title = styled.p`
 	color: #090913;
 `
 const Text = styled.p`
-	font-size: 15px;
+	font-size: 16px;
 	letter-spacing: -0.2px;
 	line-height: 24px;
 	text-align: center;
 	margin: 16px auto 20px;
-	width: 231px;
+	width: 252px;
 `
 const Explore = styled(Link)`
 	font-size: 14px;
@@ -93,7 +94,7 @@ const Img = styled.img`
 const HomeExplore: React.FC = () => {
 	return (
 		<Container>
-			<Heading>Had many wins or losses last year? Doesn’t matter!</Heading>
+			<Heading>Had many W’s or L’s last year? it doesn’t matter!</Heading>
 
 			<Img src={'/assets/images/explore-new.png'} alt='explore' />
 

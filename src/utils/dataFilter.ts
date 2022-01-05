@@ -36,7 +36,7 @@ const dateFormatter = (date: string) => {
 		dayNumber = dayNumber.substring(1)
 	}
 
-	let formattedDate = `${month} ${dayNumber} ${year}`
+	let formattedDate = `${month} ${dayNumber}, ${year}`
 	return formattedDate
 
 	// work on this... 3 hours ago, 6 days ago, Dec 2nd 2021, Dec 2nd, 2021
