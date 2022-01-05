@@ -25,10 +25,10 @@ const Heading = styled.h1`
 	font-family: Butler;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 34px;
-	line-height: 41px
-	letter-spacing: -1px
-  text-align: center;
+	font-size: 36px;
+	line-height: 43px;
+	letter-spacing: -1px;
+	text-align: center;
 	color: ${({ theme }) => theme.colors.white};
 	display: flex;
 	justify-content: flex-start;
@@ -39,12 +39,15 @@ const SubHeading = styled.p`
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
-	line-height: 24px;
-	letter-spacing: -0.2px;
+	font-size: 16px;
+	line-height: 25px;
 	color: ${({ theme }) => theme.colors.white};
 	margin-top: 7px;
-	width: 280px;
+	width: 272px;
+
+	& span {
+		font-weight: 900;
+	}
 `
 
 const emojiAnimation = keyframes`
@@ -63,7 +66,7 @@ const emojiAnimation = keyframes`
 `
 
 const Grin = styled.img`
-	margin: 0 6px;
+	margin: 0 8px;
 	width: 34px;
 	height: 34px;
 	animation: ${emojiAnimation} 2s infinite;
@@ -93,7 +96,7 @@ const ExploreHeading: React.FC = () => {
 					Explore Stories <Grin src='/assets/images/grin.png' alt='' />{' '}
 				</Heading>
 				<SubHeading>
-					That motivation you need might just be in one of these stories! Dig in!
+					The motivation you need is in one of these stories! <span>Dig in!</span>
 				</SubHeading>
 			</Header>
 		</Container>

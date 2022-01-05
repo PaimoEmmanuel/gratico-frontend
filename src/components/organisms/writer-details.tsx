@@ -2,12 +2,17 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 
 const Form = styled.form`
-	margin: 48px 0 164px 0;
+	// margin: 48px 0 164px 0;
 `
-const Label = styled.label`
+const Label = styled.label<LabelStyleProps>`
 	font-weight: 600;
 	font-size: 14px;
+	color: ${(props) => (props.active ? '#222222' : '#9E9E9E')};
 `
+
+interface LabelStyleProps {
+	active?: boolean
+}
 const Input = styled.input`
 	display: block;
 	width: 100%;
@@ -23,9 +28,10 @@ const Input = styled.input`
 		border: 1px solid ${({ theme }) => theme.colors.blue};
 	}
 `
-const InputNote = styled.p`
+const InputNote = styled.p<InputNoteStyleProps>`
 	font-size: 12px;
 	font-style: italic;
+	color: ${(props) => (props.error ? '#D91824' : '#000000')};
 `
 const Email = styled.div`
 	padding: 0 32px 30px 32px;
@@ -38,10 +44,11 @@ const Name = styled.div`
 const Button = styled.button<ButtonStyleProps>`
 	height: 50px;
 	width: 100%;
-	background-color: ${(props) => (props.styleEnabled ? props.theme.colors.blue : '#a6a6a6')};
+	background-color: ${(props) => (props.styleEnabled ? '#2D5093' : '#a6a6a6')};
 	border-radius: 8px;
 	color: ${({ theme }) => theme.colors.white};
 	border: none;
+	margin-top: 28px;
 
 	&:disabled {
 		background-color: #a6a6a6;
@@ -53,6 +60,10 @@ interface ButtonStyleProps {
 	theme?: 'theme'
 }
 
+interface InputNoteStyleProps {
+	error: boolean
+}
+
 interface WriterDetailsProps {
 	onSubmit: React.Dispatch<React.SetStateAction<number>>
 	email: string
@@ -62,6 +73,11 @@ interface WriterDetailsProps {
 }
 const WriterDetails: React.FC<WriterDetailsProps> = ({ email, setEmail, name, setName, onSubmit }) => {
 	const [buttonDisplay, setButtonDisplay] = useState(false)
+	const [labeActive, setLabelActive] = useState(false)
+	const [inputNote, setInputNote] = useState({
+		error: false,
+		note: 'You can edit your stories using this email.',
+	})
 
 	useEffect(() => {
 		if (email !== '' && name !== '') {
@@ -83,23 +99,24 @@ const WriterDetails: React.FC<WriterDetailsProps> = ({ email, setEmail, name, se
 	return (
 		<Form>
 			<Email>
-				<Label>Let’s start with your email, it’s really useful!</Label>
+				<Label active={true}>Your email is the key!</Label>
 				<Input
 					type='email'
 					placeholder='Input your email address here'
 					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					onChange={(e) => setEmail(e.target.value)} // validate then setLabelActive to true
 				/>
-				<InputNote>You can edit your stories using this email.</InputNote>
+				<InputNote error={inputNote.error}>{inputNote.note}</InputNote>
 			</Email>
 			<Name>
-				<Label>Ever seen an author without a name?</Label>
+				<Label active={false}>Authors have names, what’s yours?</Label>
 				<Input
 					type='text'
 					placeholder='Input your name or nickname here'
 					value={name}
 					onChange={(e) => setName(e.target.value)}
 				/>
+
 				<Button
 					styleEnabled={buttonDisplay}
 					onClick={(e) => {

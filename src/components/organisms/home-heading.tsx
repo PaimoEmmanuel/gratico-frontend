@@ -35,7 +35,7 @@ const Heading = styled.h1`
 `
 
 const Body = styled.p`
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: -0.2px;
 	color: ${({ theme }) => theme.colors.white};
@@ -45,7 +45,7 @@ const Body = styled.p`
 `
 
 const Write = styled(Link)`
-	font-size: 15px;
+	font-size: 16px;
 	letter-spacing: -0.2px;
 	width: 200px;
 	height: 50px;
@@ -83,7 +83,7 @@ const Grin = styled.img`
 	animation: ${emojiAnimation} 2s infinite;
 `
 const Explore = styled(Link)`
-	font-size: 15px;
+	font-size: 16px;
 	color: white;
 	padding: 10px;
 	border: 1px solid #ffffff;
