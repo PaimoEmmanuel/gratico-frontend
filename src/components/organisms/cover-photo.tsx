@@ -8,8 +8,7 @@ import { postStory } from "../../services/story";
 const Button = styled.button<ButtonStyleProps>`
   height: 50px;
   width: 100%;
-  background-color: ${(props) =>
-    props.styleEnabled ? props.theme.colors.blue : "#a6a6a6"};
+  background-color: ${(props) => (props.styleEnabled ? "#2D5093" : "#a6a6a6")};
   border-radius: 8px;
   color: ${({ theme }) => theme.colors.white};
   border: none;

@@ -4,7 +4,7 @@ const theme = {
         black: "#090913",
         white: "#FFFFFF",
         secondary: "#FDFAF2",
-        blue: "#242549"
+        blue: "#2D5093"
     }
 };
 

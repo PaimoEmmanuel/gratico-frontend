@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import CopyToast from '../molecules/copy-toast'
 
 const CardWrapper = styled.div`
 	width: 100%;
@@ -69,30 +70,6 @@ const OptionMenu = styled.div<OptionMenuStyleProps>`
 	right: 0;
 	top: 14px;
 	z-index: 10;
-`
-
-const CopyToast = styled.div<CopyToastStyleProps>`
-	// width: 122px;
-	width: ${(props) => (props.show ? '122px' : '0')};
-	// height: 45px;
-	height: ${(props) => (props.show ? '45px' : '0')};
-	background: rgba(179, 206, 159, 0.8);
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-	border-radius: 4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-style: normal;
-	font-weight: normal;
-	// font-size: 14px;
-	font-size: ${(props) => (props.show ? '14px' : '0')};
-	line-height: 15px;
-	color: #ffffff;
-	position: absolute;
-	top: 16px;
-	left: 50%;
-	transform: translateX(-50%);
-	transition: all 0.15s ease-out;
 `
 
 const ViewStoryRoute = styled(Link)`
@@ -178,10 +155,6 @@ interface StoryProps {
 }
 
 interface OptionMenuStyleProps {
-	show: boolean
-}
-
-interface CopyToastStyleProps {
 	show: boolean
 }
 
