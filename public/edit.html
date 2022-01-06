@@ -14,10 +14,9 @@
 		<style>
 			body {
 				background-color: #ffffff;
-				/* height: 100vh; */
+				/* height: 827px; */
 				font-family: 'Graphik', sans-serif;
 				margin: 0;
-				width: 100vw;
 			}
 
 			header {
@@ -31,13 +30,6 @@
 				border-bottom: 1px dashed #365899;
 			}
 
-			.email-title {
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
-				align-items: center;
-			}
-
 			h1 {
 				font-style: normal;
 				font-weight: 900;
@@ -46,18 +38,27 @@
 				color: #333333;
 			}
 
-			.email-title img {
-				margin-left: 10px;
-			}
-
 			.email-body {
 				font-style: normal;
 				font-weight: normal;
 				font-size: 16px;
-				line-height: 20px;
+				line-height: 26.5px;
 				color: #333333;
-				margin: 20px 0 56px;
-				width: 611px;
+				margin: 20px 0 40px;
+				width: 578px;
+			}
+
+			.email-body p {
+				font-style: normal;
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 21px;
+				letter-spacing: -0.02em;
+				color: #333333;
+			}
+
+			.email-body p span {
+				margin: 0 2.5px;
 			}
 
 			a,
@@ -65,6 +66,7 @@
 			a:hover {
 				color: #2477b1;
 				font-style: italic;
+				font-weight: 400;
 			}
 
 			.complimentary-close p {
@@ -87,7 +89,6 @@
 			}
 
 			footer {
-				/* width: 100%; */
 				/* padding: 60px 0 70px 66px; */
 				padding: 10px 45px 10px 66px;
 				background-color: #ffeec3;
@@ -110,22 +111,26 @@
 	<body>
 		<header><img src="./assets/images/logo-monochrome.png" alt="" /></header>
 		<main>
-			<div class="email-title">
-				<h1 class="email-heading">Welcome to Gratico!</h1>
-				<img src="./assets/images/party-popper.png" alt="" />
-			</div>
+			<h1 class="email-heading">Subject: Edit my story</h1>
 
 			<div class="email-body">
 				Dear {{name inputed on gratico}}, <br />
 				<br />
-				We're super thrilled to have you on board! <br />
+				Editing your story on gratico is without a hassle, to save you time we’ve gathered all the
+				stories you’ve published on Gratico at your fingertip below. <br />
 				<br />
-				Taking a bold step to share your story means a lot to us and to the readers out there. <br />
-				<br />
-				You can share the link to your story amidst your circle of influence using the link below:
+				Click the edit button beside the title of the story you want to edit;
 				<br />
 				<br />
-				<a href="" class="story-link">gratico.xyz/aremu01story</a>
+
+				<p>
+					&#8226; <span></span> A Grateful heart always finds hope -
+					<a href="" class="story-link">edit story</a>
+				</p>
+				<p>
+					&#8226; <span></span> A Grateful heart always finds hope -
+					<a href="" class="story-link">edit story</a>
+				</p>
 			</div>
 
 			<div class="complimentary-close">
