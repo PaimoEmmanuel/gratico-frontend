@@ -12,12 +12,44 @@
 		<title>Gratico - You posted a story on</title>
 
 		<style>
+			@font-face {
+				font-family: 'Graphik';
+				src: url('Graphik-Medium.eot');
+				src: local('Graphik Medium'), local('Graphik-Medium'),
+					url('Graphik-Medium.eot?#iefix') format('embedded-opentype'),
+					url('Graphik-Medium.woff2') format('woff2'), url('Graphik-Medium.woff') format('woff'),
+					url('Graphik-Medium.ttf') format('truetype');
+				font-weight: 500;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'Graphik';
+				src: url('Graphik-Black.eot');
+				src: local('Graphik Black'), local('Graphik-Black'),
+					url('Graphik-Black.eot?#iefix') format('embedded-opentype'),
+					url('Graphik-Black.woff2') format('woff2'), url('Graphik-Black.woff') format('woff'),
+					url('Graphik-Black.ttf') format('truetype');
+				font-weight: 900;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'Graphik';
+				src: url('Graphik-Semibold.eot');
+				src: local('Graphik Semibold'), local('Graphik-Semibold'),
+					url('Graphik-Semibold.eot?#iefix') format('embedded-opentype'),
+					url('Graphik-Semibold.woff2') format('woff2'), url('Graphik-Semibold.woff') format('woff'),
+					url('Graphik-Semibold.ttf') format('truetype');
+				font-weight: 600;
+				font-style: normal;
+			}
+
 			body {
 				background-color: #ffffff;
-				/* height: 100vh; */
+				/* height: 827px; */
 				font-family: 'Graphik', sans-serif;
 				margin: 0;
-				width: 100vw;
 			}
 
 			header {
@@ -25,6 +57,7 @@
 			}
 
 			main {
+				font-family: 'Graphik', sans-serif;
 				padding: 70px 0 40px 80px;
 				margin: 0;
 				border-top: 1px dashed #365899;
@@ -39,6 +72,7 @@
 			}
 
 			h1 {
+				font-family: 'Graphik', sans-serif;
 				font-style: normal;
 				font-weight: 900;
 				font-size: 24px;
@@ -51,23 +85,42 @@
 			}
 
 			.email-body {
+				font-family: 'Graphik', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				font-size: 16px;
-				line-height: 20px;
+				line-height: 26.5px;
 				color: #333333;
-				margin: 20px 0 56px;
-				width: 611px;
+				margin: 20px 0 40px;
+				width: 578px;
+			}
+
+			.email-body p {
+				font-family: 'Graphik', sans-serif;
+				font-style: normal;
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 21px;
+				letter-spacing: -0.02em;
+				color: #333333;
+			}
+
+			.email-body span {
+				text-transform: uppercase;
+				font-weight: 900;
 			}
 
 			a,
 			a:focus,
 			a:hover {
+				font-family: 'Graphik', sans-serif;
 				color: #2477b1;
 				font-style: italic;
+				font-weight: 400;
 			}
 
 			.complimentary-close p {
+				font-family: 'Graphik', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				font-size: 16px;
@@ -79,15 +132,15 @@
 			}
 
 			.complimentary-close h3 {
+				font-family: 'Graphik', sans-serif;
 				font-style: normal;
-				font-weight: 900;
+				font-weight: 600;
 				font-size: 15px;
 				line-height: 25px;
 				color: #636363;
 			}
 
 			footer {
-				/* width: 100%; */
 				/* padding: 60px 0 70px 66px; */
 				padding: 10px 45px 10px 66px;
 				background-color: #ffeec3;
@@ -98,6 +151,7 @@
 			}
 
 			footer p {
+				font-family: 'Graphik', sans-serif;
 				font-style: normal;
 				font-weight: 900;
 				font-size: 24px;
@@ -111,20 +165,18 @@
 		<header><img src="./assets/images/logo-monochrome.png" alt="" /></header>
 		<main>
 			<div class="email-title">
-				<h1 class="email-heading">Welcome to Gratico!</h1>
+				<h1 class="email-heading">Subject: Your story has been updated!</h1>
 				<img src="./assets/images/party-popper.png" alt="" />
 			</div>
 
 			<div class="email-body">
 				Dear {{name inputed on gratico}}, <br />
 				<br />
-				We're super thrilled to have you on board! <br />
-				<br />
-				Taking a bold step to share your story means a lot to us and to the readers out there. <br />
-				<br />
-				You can share the link to your story amidst your circle of influence using the link below:
+				Your <span>“A Grateful heart always finds hope”</span> story has been updated you can share it
+				using the same link, incase you missed it? You can find the link below:
 				<br />
 				<br />
+
 				<a href="" class="story-link">gratico.xyz/aremu01story</a>
 			</div>
 
