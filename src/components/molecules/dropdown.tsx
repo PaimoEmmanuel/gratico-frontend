@@ -136,10 +136,10 @@ const Dropdown: React.FC<DropdownProps> = ({ onSelect }) => {
 							<path
 								d='M13.2802 5.96667L8.93355 10.3133C8.42021 10.8267 7.58021 10.8267 7.06688 10.3133L2.72021 5.96667'
 								stroke='white'
-								stroke-width='1.5'
-								stroke-miterlimit='10'
-								stroke-linecap='round'
-								stroke-linejoin='round'
+								strokeWidth='1.5'
+								strokeMiterlimit='10'
+								strokeLinecap='round'
+								strokeLinejoin='round'
 							/>
 						</svg>
 					</SelectBoxArrow>

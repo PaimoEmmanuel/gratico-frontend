@@ -15,11 +15,14 @@ const Container = styled.div<NavStyleProps>`
 	}
 `
 
-const Logo = styled.a`
+const Logo = styled(Link)`
 	text-decoration: none;
 	margin: 0;
 	padding: 0;
-	height: 44px;
+	& img {
+		height: 44px;
+		width: 44px;
+	}
 `
 
 const NavWrapper = styled.div`
@@ -99,8 +102,7 @@ interface NavProps {
 }
 
 const Navigation: React.FC<NavProps> = ({ logoSrc, bgColor, navColor }) => {
-	const [state, setState] = useState({ isNavOpen: false })
-
+	const [navOpen, setNavOpen] = useState(false)
 	const [scrolled, setScrolled] = useState(false)
 
 	const handleScroll = () => {
@@ -117,7 +119,7 @@ const Navigation: React.FC<NavProps> = ({ logoSrc, bgColor, navColor }) => {
 	})
 
 	const handleNavClick = () => {
-		setState((state) => ({ ...state, isNavOpen: !state.isNavOpen }))
+		setNavOpen(!navOpen)
 	}
 
 	return (
@@ -125,40 +127,32 @@ const Navigation: React.FC<NavProps> = ({ logoSrc, bgColor, navColor }) => {
 			{scrolled ? (
 				<NavWrapper style={styles.wrapperScrolled} id='nav-wrapper'>
 					<Nav style={styles.navScrolled} id='nav'>
-						<Logo href='/'>
+						<Logo to='/'>
 							<img src='/assets/images/logo-monochrome.png' alt='Gratico logo' />
 						</Logo>
-						<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen} sticky={true}>
+						<MenuIcon onClick={handleNavClick} clicked={navOpen} sticky={true}>
 							<span></span>
 							<span></span>
 							<span></span>
 						</MenuIcon>
 					</Nav>
 
-					{state.isNavOpen ? (
-						<Menu isOpen={state.isNavOpen} scrolled={scrolled} />
-					) : (
-						<Menu isOpen={state.isNavOpen} />
-					)}
+					{navOpen ? <Menu isOpen={navOpen} scrolled={scrolled} /> : <Menu isOpen={navOpen} />}
 				</NavWrapper>
 			) : (
 				<NavWrapper>
 					<Nav>
-						<Logo href='/'>
+						<Logo to='/'>
 							<img src={logoSrc} alt='Gratico logo' />
 						</Logo>
-						<MenuIcon onClick={handleNavClick} clicked={state.isNavOpen} bgColor={navColor}>
+						<MenuIcon onClick={handleNavClick} clicked={navOpen} bgColor={navColor}>
 							<span></span>
 							<span></span>
 							<span></span>
 						</MenuIcon>
 					</Nav>
 
-					{state.isNavOpen ? (
-						<Menu isOpen={state.isNavOpen} scrolled={scrolled} />
-					) : (
-						<Menu isOpen={state.isNavOpen} />
-					)}
+					{navOpen ? <Menu isOpen={navOpen} scrolled={scrolled} /> : <Menu isOpen={navOpen} />}
 				</NavWrapper>
 			)}
 		</Container>

@@ -176,7 +176,7 @@ const ExploreStories: React.FC<ExploreStoriesProps> = ({ filterBy }) => {
 								</SpinIcon>
 							</SeeMoreStories>
 						)}
-						{1 < noOfPages && noOfPages > currentPage && (
+						{1 < noOfPages && noOfPages > currentPage && loadingMore === false && (
 							<SeeMoreStories
 								onClick={() => {
 									setCurrentPage(currentPage + 1)

@@ -16,7 +16,7 @@ const HeadingWrap = styled.div`
 	padding: 0 32px;
 	border: 1px solid #eaeaea;
 `
-const Title = styled.h3`
+const Title = styled.div`
 	width: 278px;
 	display: flex;
 	justify-content: flex-start;
@@ -109,7 +109,7 @@ const WriteStory: React.FC = () => {
 							<Text>No sign up forms required! Gratico is super easy to use!</Text>
 						</div>
 					)}
-					{activeView >= 1  && (
+					{activeView >= 1 && (
 						<div>
 							<Title>
 								<h3>Remember your story could encourage a reader out there.</h3>

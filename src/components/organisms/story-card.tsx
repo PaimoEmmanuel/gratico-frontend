@@ -26,8 +26,8 @@ const Author = styled.h4`
 	font-family: Graphik;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
-	line-height: 17.8px;
+	font-size: 15px;
+	line-height: 17px;
 	text-transform: uppercase;
 `
 
@@ -51,7 +51,7 @@ const OptionMenu = styled.div<OptionMenuStyleProps>`
 	// height: 45px;
 	height: ${(props) => (props.show ? '45px' : '0')};
 	background: #121212;
-	border: 0.2px solid #555;
+	border: ${(props) => (props.show ? '0.2px solid #555' : 'none')};
 	box-sizing: border-box;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
@@ -68,7 +68,7 @@ const OptionMenu = styled.div<OptionMenuStyleProps>`
 
 	position: absolute;
 	right: 0;
-	top: 14px;
+	top: 24px;
 	z-index: 10;
 `
 
@@ -97,6 +97,7 @@ const StoryTitle = styled.h3`
 	font-size: 22px;
 	line-height: 30px;
 	letter-spacing: -0.2px;
+	word-break: break-word;
 `
 
 const StoryMeta = styled.div`
@@ -200,14 +201,14 @@ const StoryCard: React.FC<StoryProps> = ({ id, author, cover_img, title, date, r
 			}
 		})
 
-		document.removeEventListener('mouseup', function (e) {
-			let container = document.getElementById('copy-link') as HTMLDivElement
-			if (e.target instanceof Element) {
-				if (!container.contains(e.target)) {
-					setOptionShow(false)
-				}
-			}
-		})
+		// document.removeEventListener('mouseup', function (e) {
+		// 	let container = document.getElementById('copy-link') as HTMLDivElement
+		// 	if (e.target instanceof Element) {
+		// 		if (!container.contains(e.target)) {
+		// 			setOptionShow(false)
+		// 		}
+		// 	}
+		// })
 	}, [])
 
 	return (
@@ -268,9 +269,9 @@ const StoryCard: React.FC<StoryProps> = ({ id, author, cover_img, title, date, r
 									<path
 										d='M9.465 15.6075C9.21 15.6975 8.79 15.6975 8.535 15.6075C6.36 14.865 1.5 11.7675 1.5 6.51753C1.5 4.20003 3.3675 2.32503 5.67 2.32503C7.035 2.32503 8.2425 2.98503 9 4.00503C9.7575 2.98503 10.9725 2.32503 12.33 2.32503C14.6325 2.32503 16.5 4.20003 16.5 6.51753C16.5 11.7675 11.64 14.865 9.465 15.6075Z'
 										stroke='white'
-										stroke-width='1'
-										stroke-linecap='round'
-										stroke-linejoin='round'
+										strokeWidth='1'
+										strokeLinecap='round'
+										strokeLinejoin='round'
 									/>
 								</svg>
 							</HeartIcon>

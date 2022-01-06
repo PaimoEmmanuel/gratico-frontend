@@ -26,7 +26,7 @@ const Img = styled.img`
 `
 const Heading = styled.h1`
 	font-weight: 700;
-	font-size: 34px;
+	font-size: 36px;
 	line-height: 40px;
 	letter-spacing: -1px;
 	text-align: center;
@@ -36,12 +36,12 @@ const Heading = styled.h1`
 
 const Body = styled.p`
 	font-size: 16px;
-	line-height: 24px;
+	line-height: 25px;
 	letter-spacing: -0.2px;
 	color: ${({ theme }) => theme.colors.white};
 	text-align: center;
 	margin: 32px auto;
-	width: 236px;
+	width: 290px;
 `
 
 const Write = styled(Link)`
@@ -77,13 +77,16 @@ const emojiAnimation = keyframes`
 `
 
 const Grin = styled.img`
-	margin: 0 4px;
+	margin: 0 0 0 4px;
 	width: 20px;
 	height: 20px;
 	animation: ${emojiAnimation} 2s infinite;
 `
 const Explore = styled(Link)`
 	font-size: 16px;
+	line-height: 18px;
+	width: 161px;
+	height: 46px;
 	color: white;
 	padding: 10px;
 	border: 1px solid #ffffff;
@@ -92,7 +95,6 @@ const Explore = styled(Link)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: fit-content;
 	position: relative;
 	z-index: 5;
 	& svg {
@@ -137,8 +139,8 @@ const HomeHeading: React.FC = () => {
 						<path
 							d='M1 1C204.488 114.382 321.325 247.012 302.604 351.133C283.884 455.254 120.923 333.624 30.1204 585.915C-60.6817 838.207 435.076 997.187 341.085 851.322'
 							stroke='white'
-							stroke-opacity='0.4'
-							stroke-width='0.2'
+							strokeOpacity='0.4'
+							strokeWidth='0.2'
 						/>
 					</svg>
 				</Absolute>

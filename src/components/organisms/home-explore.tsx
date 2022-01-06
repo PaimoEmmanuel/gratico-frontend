@@ -6,18 +6,23 @@ import BaseNote from '../molecules/base-note'
 
 const Container = styled.div`
 	margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 
 	@media (min-width: 600px) {
 		display: none;
 	}
 `
 const Heading = styled.h3`
-	font-size: 34px;
+	font-size: 36px;
+	width: 338px;
 	line-height: 40px;
+	height: 120px;
 	letter-spacing: -1px;
 	text-align: center;
-	margin: 34px auto 40px;
-	width: 309px;
+	margin: 32px auto 26px;
 `
 const Title = styled.p`
 	font-size: 18px;
@@ -30,30 +35,16 @@ const Title = styled.p`
 `
 const Text = styled.p`
 	font-size: 16px;
-	letter-spacing: -0.2px;
-	line-height: 24px;
+	// letter-spacing: -0.2px;
+	line-height: 25px;
 	text-align: center;
 	margin: 16px auto 20px;
 	width: 252px;
 `
-const Explore = styled(Link)`
-	font-size: 14px;
-	color: #090913;
-	padding: 14px 16px;
-	border: 1px solid #090913;
-	border-radius: 6px;
-	margin: 0 auto 64px auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: fit-content;
-	& svg {
-		margin-left: 6px;
-	}
-`
+
 const Write = styled(Link)`
-	font-size: 15px;
-	letter-spacing: -0.2px;
+	font-size: 16px;
+	line-height: 18px;
 	width: 200px;
 	height: 50px;
 	background-color: ${({ theme }) => theme.colors.primary};
@@ -65,8 +56,28 @@ const Write = styled(Link)`
 	text-decoration: none;
 	color: black;
 	margin-bottom: 24px;
+	z-index: 5;
+	position: relative;
+
 	& svg {
-		margin-left: 5px;
+		margin-left: 6px;
+	}
+`
+
+const Explore = styled(Link)`
+	font-size: 16px;
+	line-height: 17.6px;
+	color: #090913;
+	border: 1px solid #090913;
+	border-radius: 6px;
+	margin: 0 auto 64px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 161px;
+	height: 48px;
+	& svg {
+		margin-left: 6px;
 	}
 `
 
@@ -86,10 +97,13 @@ const imgAnimation = keyframes`
 `
 
 const Img = styled.img`
-	width: 70%;
-	margin-left: 15%;
+	width: 316px;
+	height: 304px;
+	margin: 0 auto;
+
+	border-radius: 9px;
 	animation: ${imgAnimation} 2s infinite;
-	transition: all 0.3s;
+	transition: all 0.3s ease-out;
 `
 const HomeExplore: React.FC = () => {
 	return (
